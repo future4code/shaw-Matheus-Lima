@@ -1,0 +1,23 @@
+#logo{
+    height: 25vw;
+    width: 30vw;
+    
+}
+
+#bemvindo{
+    background-color: blue;
+    color:yellow;
+    margin: 25px;
+    border: 5;
+    width: 21vw;
+    
+}
+
+
+#dinheiro{
+    background-color: green;
+   font-weight: bold;
+   width: 17vw;
+}
+
+.sumir{display: none;}
