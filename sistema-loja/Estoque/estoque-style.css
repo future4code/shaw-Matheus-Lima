@@ -1,0 +1,33 @@
+#tamanhoPs5{
+    width: 30vw;
+}
+
+#tamanhoIphone{
+    width: 30vw;
+    height: 30vw;
+}
+
+#tamanhoCafe{
+    width: 25vw;
+    height: 20vw;
+}
+
+#tamanhoCocaCola{
+    width: 25vw;
+}
+
+#tamanhoXbox{
+    width: 23vw;
+}
+
+#tabela{
+    padding: 2vw;
+}
+
+.espacos{
+    padding: 2vw;
+}
+
+.espacosColunas{
+    padding: 5vw;
+}

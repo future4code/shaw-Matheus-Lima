@@ -1,0 +1,23 @@
+h2{
+    background-color:green;
+    width: 13vw;
+    color: yellow;
+}
+
+.nomeLojinha{
+    font-weight: bolder;
+background-color: green;
+color:yellow;
+width: 3.3vw;
+
+}
+
+.nomesNaBox{
+    font-weight: bolder;
+}
+
+.box-pesquisa{
+    background-color: green;
+    color: yellow;
+    width: 11vw;
+}
