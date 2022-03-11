@@ -1,0 +1,84 @@
+
+.barraAqui {
+    transition: all 0.4s;
+}
+
+.barraAqui .nav-link {
+    color: #fff;
+}
+
+.barraAqui .nav-link:hover,
+.barraAqui .nav-link:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.barraAqui .barraAqui-brand {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    min-height: 110vh;
+    background-color: #4ca1af;
+    background-image: linear-gradient(135deg, #4ca1af 0%, #c4e0e5 100%);
+}
+
+
+#rodape{
+    position: absolute;
+    bottom: -110px;
+    background-color: rgba(30, 162, 167, 0.438);
+    color: #FFF;
+    width: 100%;
+    height: -100px;    
+    text-align: center;
+    line-height: 100px;
+}
+
+.lead{
+    position: relative;
+    text-align: center;
+}
+
+
+.fotobugs{
+    width: 500px;
+}
+
+
+#foto{
+position: relative;
+left: 40vw;
+bottom: 39.3vw;
+
+}
+
+
+
+
+#fotoeu{
+    position: relative;
+    left: 800px;
+    border: 2px;
+    border-radius: 20%;
+
+}
+
+#github{
+    padding: 20vw;
+
+}
+
+
