@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+#pai-de-todos{
+    height: 100vh;
+    display: flex;
+    
+    
+}
+#cabeca{
+    background-color: orange;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    padding: 0 70;
+    justify-content: space-between;
+
+}
+#painel-videos{
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr,1fr,1fr,1fr ;
+    grid-template-rows: 1fr, 1fr, 1fr, 1fr;
+    row-gap: 10px;
+    column-gap: 20px;
+    margin: 20px;
+}
+
+
+
+
+.videos{
+    display: grid;
+    grid-template-columns: 2fr,1fr;
+    grid-template-rows: 1fr;
+    border-style: groove;
+    border-width: thick;
+    align-items: start;
+    justify-items: stretch;
+}
+
+
+footer{
+    background: #333b3e;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  padding: 0 10px;
+  justify-content: center;
+}
