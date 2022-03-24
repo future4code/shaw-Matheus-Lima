@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Post from "./Components/Post/Post";
+import Post from "./components/Post/Post";
 
 const MainContainer = styled.div`
   display: flex;
@@ -10,35 +10,50 @@ const MainContainer = styled.div`
 `;
 
 class App extends React.Component {
+  state = {
+    id: 0,
+    fotoPost: "",
+    fotoUsuario: "",
+    nomeUsuario: "",
+    postagem: [
+      {
+        id: "1",
+        fotoUsuario: "https://picsum.photos/50/50",
+        nomeUsuario: "Paulinha",
+        fotoPost: "https://picsum.photos/200/150",
+      },
+      {
+        id: "2",
+        fotoUsuario: "https://picsum.photos/50/50",
+        nomeUsuario: "Sabrina",
+        fotoPost: "https://picsum.photos/200/150",
+      },
+      {
+        id: "3",
+        fotoUsuario: "https://picsum.photos/50/50",
+        nomeUsuario: "Seu Zé",
+        fotoPost: "https://picsum.photos/200/150",
+      },
+    ],
+  };
+
   render() {
-    return (
-      <MainContainer>
+    const renderizaNaTela = this.state.postagem.map((post) => {
+      return (
         <Post
-          nomeUsuario={"paulinha"}
-          fotoUsuario={"https://picsum.photos/50/50"}
-          fotoPost={"https://picsum.photos/200/150"}
+          key={post.id}
+          id={post.id}
+          fotoUsuario={post.fotoUsuario}
+          nomeUsuario={post.nomeUsuario}
+          fotoPost={post.fotoPost}
         />
-
-        <Post
-          nomeUsuario={"Daniel"}
-          fotoUsuario={"https://picsum.photos/200/300"}
-          fotoPost={"https://picsum.photos/200/150"}
-        />
-
-        <Post
-          nomeUsuario={"Seu Zé"}
-          fotoUsuario={"https://picsum.photos/50/50"}
-          fotoPost={"https://picsum.photos/200/150"}
-        />
-
-        
-      </MainContainer>
+      );
+    });
+    return <MainContainer>
+      {renderizaNaTela}
       
-      
-    );
+    </MainContainer>;
   }
 }
-
-
 
 export default App;
