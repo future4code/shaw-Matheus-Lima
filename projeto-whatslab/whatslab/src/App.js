@@ -1,25 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+// import { render } from "@testing-library/react";
+import React, { useState } from "react";
+import "./App.css";
+import {Chat,Titulo,InputNome,DivPai,InputMensagem,Mensagem} from "./Components/Chat";
+class App extends React.Component {
+  state = {
+    mensagem: [
+    
+     
+    ],
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    valorInputUsuario: "",
+    valorInputchat: "",
+  };
+
+  novoUsuario = () => {
+    const novaUsuario = {
+      usuario: this.state.valorInputUsuario,
+
+      chat: this.state.valorInputchat,
+      
+    };
+
+    const novomensagem = [...this.state.mensagem, novaUsuario];
+
+    this.setState({ mensagem: novomensagem });
+    this.setState({valorInputchat:""})
+  };
+
+  onChangeInputUsuario = (event) => {
+    this.setState({ valorInputUsuario: event.target.value });
+  };
+
+  onChangeInputchat = (event) => {
+    this.setState({ valorInputchat: event.target.value });
+  };
+
+  render() {
+    const logMensagens = this.state.mensagem.map((props) => {
+      return (
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {props.usuario}:  {props.chat}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      );
+    });
+
+    return (
+      <DivPai>
+      <Chat>
+        <Titulo>WhatsLab</Titulo>
+        <div>
+        <Mensagem>{logMensagens}</Mensagem>
+          <InputNome
+            value={this.state.valorInputUsuario}
+            onChange={this.onChangeInputUsuario}
+            placeholder={"Usúario"}
+          />
+          <InputMensagem 
+            value={this.state.valorInputchat}
+            onChange={this.onChangeInputchat}
+            placeholder={"Chat"}
+          />
+          <button onClick={this.novoUsuario}>Enviar!!</button>
+        </div>
+        
+      </Chat>
+      </DivPai>
+    );
+  }
 }
 
 export default App;
