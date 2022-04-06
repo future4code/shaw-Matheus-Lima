@@ -18,57 +18,54 @@ export default class Inscricao extends React.Component {
   };
 
   createUser = () => {
-      const header = {
-          headers:{
-            Authorization:"matheus-moura-shaw"
-          }
-      }
+    const header = {
+      headers: {
+        Authorization: "matheus-moura-shaw",
+      },
+    };
     const body = {
-      name: this.state.name, 
+      name: this.state.name,
       email: this.state.email,
     };
     axios
       .post(
         "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users",
         body,
-        header      
+        header
       )
-      .then(() => {
+      .then((res) => {
         alert(`Usuário ${this.state.name} criado com sucesso!`);
         this.setState({ name: "", email: "" });
+        // console.log(res)
       })
-      .catch(error => {
+      .catch((error) => {
         alert("Erro ao criar o usuário");
-        console.log(error);
+        // console.log(error);
       });
   };
 
   render() {
     return (
       <div>
+        <h2>Cadastro</h2>
         <label>
-          <button>Trocar de Tela</button>
+          <button onClick={this.props.irParaListaUsuarios}>
+            Trocar de Tela
+          </button>
           <input
             placeholder="Nome"
-
             type={"text"}
-
             value={this.state.name}
-
             onChange={this.onChangeName}
           />
 
-          <input placeholder="E-mail" 
-          
-          type={"email"}
-
-          value={this.state.email}
-
-          onChange={this.onChangeEmail}
-
+          <input
+            placeholder="E-mail"
+            type={"email"}
+            value={this.state.email}
+            onChange={this.onChangeEmail}
           />
           <button onClick={this.createUser}>Criar Usuário</button>
-          
         </label>
       </div>
     );

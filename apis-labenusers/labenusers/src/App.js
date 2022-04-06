@@ -1,18 +1,40 @@
-import React from 'react'
-import Inscricao from './components/Inscricao'
-import { Usuario } from './components/Usuario'
+import React from "react";
+import Inscricao from "./components/Inscricao";
+import { ListaUsuario } from "./components/ListaUsuario";
+import styled from "styled-components";
+export default class App extends React.Component {
+  state = {
+    telAtual: "cadastro",
+    
+  };
 
 
-export default class App extends React.Component{
-  render(){
-    
-   
-   
-   
-    return<div>
-      <Inscricao/>
-      <Usuario/>
-    </div>
-    
+  escolherTela = () => {
+    switch (this.state.telAtual) {
+      case "cadastro":
+        return <Inscricao irParaListaUsuarios={this.irParaListaUsuarios}/>;
+        
+      case "lista":
+        return <ListaUsuario irParaCadastro={this.irParaCadastro}/>;
+        
+      default:
+        return <div>Erro Página não encontrada</div>;
+    }
+  };
+
+  irParaCadastro= () =>{
+    this.setState({telAtual:"cadastro"})
+  }
+
+  irParaListaUsuarios = () =>{
+    this.setState({telAtual:"lista"})
+  }
+
+  render() {
+    return (
+      <div>
+          {this.escolherTela()}
+      </div>
+    );
   }
 }
