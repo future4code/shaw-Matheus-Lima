@@ -1,0 +1,119 @@
+
+.barraAqui {
+    transition: all 0.4s;
+}
+
+.barraAqui .nav-link {
+    color: #fff;
+}
+
+.barraAqui .nav-link:hover,
+.barraAqui .nav-link:focus {
+    color: #fff;
+    text-decoration: none;
+}
+
+.barraAqui .barraAqui-brand {
+    color: #fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+body {
+    min-height: 110vh;
+    background-color: #4ca1af;
+    background-image: linear-gradient(135deg, #2964d1 0%, #0e0f11 100%);
+}
+
+
+#rodape{
+    position: absolute;
+    bottom: -140px;
+    background-color: rgba(30, 162, 167, 0.438);
+    color: #FFF;
+    width: 100%;
+    height: -100px;    
+    text-align: center;
+    line-height: 50px;
+}
+
+.sobremin{
+    position: relative;
+    text-align: center;
+    color: rgb(192, 187, 199);
+}
+
+
+#competencias{
+    text-align: center;
+    padding: 100px;
+    
+}
+
+
+.fotobugs{
+    width: 500px;
+}
+
+/* imagens portifolio */
+#foto{
+position: relative;
+left: 40vw;
+bottom: 39.3vw;
+
+}
+/* <-----------> */
+
+
+/* foto minha home */
+#fotoeu{
+     margin: 44vw;
+    border: auto 100px;
+    border-radius: 50%;
+    
+}
+/* <---------------------> */
+ #logos{
+     width: 25vw;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#github{
+    padding: 20vw;
+
+    margin: 10vw;
+}
+
+
