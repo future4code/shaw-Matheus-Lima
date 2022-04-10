@@ -20,7 +20,7 @@ class DetalhesUsuario extends React.Component {
 
     const headers = {
       headers: {
-        Authorization: "murilo-terenciani-silveira"
+        Authorization: "matheus-moura-shaw"
       }
     };
 
@@ -47,7 +47,7 @@ class DetalhesUsuario extends React.Component {
 
     const headers = {
       headers: {
-        Authorization: "murilo-terenciani-silveira"
+        Authorization: "matheus-moura-shaw"
       }
     };
 
