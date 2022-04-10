@@ -1,6 +1,7 @@
 import React from "react";
 import TelaCriarPlaylist from "./components/TelaCriarPlaylist"
 import TelaPlaylist from "./components/TelaPlaylist"
+import Styled from "styled-components"
 
 export default class App extends React.Component {
   state = {
