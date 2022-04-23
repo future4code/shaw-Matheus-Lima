@@ -25,4 +25,7 @@ export const swipeLeft = keyframes`
 	  transform: translate(200px) rotate(20deg);
   }
 `;
+export const ContainerCardApp = styled.div`
+background-color: #a90b80;
 
+`

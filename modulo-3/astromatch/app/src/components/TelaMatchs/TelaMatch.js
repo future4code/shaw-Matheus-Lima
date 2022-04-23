@@ -8,10 +8,18 @@ const PaiListaMatch = styled.div`
   justify-content: center;
 `;
 
-const ContainerListaMatches = styled.div`
+const ContainerListaMatches = styled.div` // lista a ser mostrada uma em baixo da outra
   display: flex;
+  flex-direction: column;
   height: 40px;
 `;
+
+const ContainerListaMatchs = styled.img` // imagens que vem em lista
+width: 100px;
+height: 200px;
+`
+
+
 
 const url =
   "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/";
@@ -44,16 +52,26 @@ const [listMatch, setListaMatch] = useState([]);
       });
   };
 
-//   useEffect(() => {
-//     getMatches();
-//   }, []);
+  useEffect(() => {
+    getMatches();
+  }, []);
+
+  const ListaLikes = listMatch.map((gostei)=>{
+    return (
+    <div>
+    <ContainerListaMatchs>{gostei.photo}</ContainerListaMatchs>
+    <ContainerListaMatches>{gostei.name}</ContainerListaMatches>
+   
+    </div>
+ )
+  })
 
 
 
   return (
     <PaiListaMatch>
       <h2>Matches</h2>
-      <ContainerListaMatches></ContainerListaMatches>
+      <ContainerListaMatches>{ListaLikes}</ContainerListaMatches>
     </PaiListaMatch>
   );
 };
