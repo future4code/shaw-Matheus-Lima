@@ -1,7 +1,7 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import TelaMatch from "./components/TelaMatchs/TelaMatch";
 import TelaInicial from "./components/TelaInicial/TelaInicial";
-import { ContainerCardApp } from "./StyledApp";
+import { ContainerCardApp,ContainerBotaoTroca } from "./StyledApp";
 import Home from "./assets/Home.jpg";
 import Astronauta from "./assets/Astronauta.jpg";
 const App = () => {
@@ -26,18 +26,21 @@ const App = () => {
   return (
     <ContainerCardApp>
       {trocaPagina === "Tela Inicial" ? (
-        <button onClick={() => mudaPagina("Tela Matches")}>
-          <img
-            src={Astronauta}
-            width={"70px"}
-            height={"50px"}
-            alt="Lista Matches"
-          />
-        </button>
+        <ContainerBotaoTroca
+          src={Astronauta}
+          width={"70px"}
+          height={"50px"}
+          alt="Lista Matches"
+          onClick={() => mudaPagina("Tela Matches")}
+        />
       ) : (
-        <button onClick={() => mudaPagina("Tela Inicial")}>
-          <img src={Home} width={"70px"} height={"60px"} alt="Voltar Home" />
-        </button>
+        <ContainerBotaoTroca
+          src={Home}
+          width={"70px"}
+          height={"60px"}
+          alt="Voltar Home"
+          onClick={() => mudaPagina("Tela Inicial")}
+        />
       )}
       <TelaInicial />
       {renderizaPagina()}

@@ -2,6 +2,11 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { ContainerLike, ContainerDeslike } from "./StyledInicial";
+import LikeHeart from "./assets/LikeHeart.png"
+import Deslike from "./assets/Deslike.png"
+
+
+
 const url = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/`;
 //estilização
 //Container Pai de todos
@@ -105,12 +110,12 @@ const TelaInicial = () => {
           </CardPerfil>
 
           <BotaoLike>
-            <ContainerDeslike onClick={() => postChoosePerson(false)}>
-              Deslike
-            </ContainerDeslike>
-            <ContainerLike onClick={() => postChoosePerson(true)}>
-              Like
-            </ContainerLike>
+            <ContainerDeslike src={Deslike} onClick={() => postChoosePerson(false)}/>
+            
+           
+            <ContainerLike src={LikeHeart} onClick={() => postChoosePerson(true)}/>
+              
+            
           </BotaoLike>
         </AbaixoMain>
       ) : (
