@@ -15,13 +15,11 @@ const Main = styled.div`
 `;
 
 const AbaixoMain = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-
-`
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+`;
 
 // container da foto não está sendo usado para nada apenas para deixar mais fácil a visualização
 const FotoPerfil = styled.img`
@@ -31,7 +29,7 @@ const FotoPerfil = styled.img`
 // estilização para todas as informações dentro sendo nome idade bio e botões
 const CardPerfil = styled.div`
   width: 30%;
-  height: 30rem;
+  /* height: 30rem; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -59,7 +57,7 @@ const TelaInicial = () => {
   //função que está recebendo da api as informações de idade foto e biografia
   const getProfiletoChoose = () => {
     axios
-      .get(`${url}person`)
+      .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/person")
       .then((res) => {
         setProfile(res.data.profile);
       })
@@ -75,12 +73,12 @@ const TelaInicial = () => {
       boolean: boolean,
     };
     axios
-      .post(`${url}choose-person`, body)
+      .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/choose-person",body)
       .then(() => {
         getProfiletoChoose();
       })
-      .catch((res) => {
-        console.log(res.response);
+      .catch((error) => {
+        console.log(error.response);
       });
   };
 
@@ -92,32 +90,32 @@ const TelaInicial = () => {
   return (
     <Main>
       {profile ? (
-      <AbaixoMain>
-      <CardPerfil>
-        <h2>AstroMatch</h2> 
-
-        <FotoPerfil src={profile.photo} />
-        <p>
-          {profile.name} - {profile.age}Anos
-        </p>
-
-        <p>{profile.bio}</p>
-      </CardPerfil>
-
-      <BotaoLike>
-        <ContainerDeslike onClick={() => getProfiletoChoose(false)}>Deslike</ContainerDeslike>
-
-        <ContainerLike onClick={() => getProfiletoChoose(true)}>Like</ContainerLike>
-      </BotaoLike>
-      </AbaixoMain>):(<div>Você zerou todos os Matchs!</div>
+        <AbaixoMain>
+                <h2>AstroMatch</h2>
+          <CardPerfil>
       
 
+            <FotoPerfil src={profile.photo} />
+            <p>
+              {profile.name} - {profile.age}Anos
+            </p>
+
+            <p>{profile.bio}</p>
+          </CardPerfil>
+
+          <BotaoLike>
+            <ContainerDeslike onClick={() => postChoosePerson(false)}>
+              Deslike
+            </ContainerDeslike>
+            <ContainerLike onClick={() => postChoosePerson(true)}>
+              Like
+            </ContainerLike>
+          </BotaoLike>
+        </AbaixoMain>
+      ) : (
+        <div>Você zerou todos os Matchs!</div>
       )}
-    
-    
-    
-    
-      </Main>
+    </Main>
   );
 };
 

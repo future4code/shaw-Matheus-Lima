@@ -6,39 +6,49 @@ const PaiListaMatch = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
 `;
 
-const ContainerListaMatches = styled.div` // lista a ser mostrada uma em baixo da outra
+const ContainerListaLikes = styled.div` // lista a ser mostrada uma em baixo da outra
   display: flex;
   flex-direction: column;
   height: 40px;
 `;
 
 const ContainerListaMatchs = styled.img` // imagens que vem em lista
-width: 100px;
-height: 200px;
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 100%;
+background-color: white;
+
 `
 
 
 
 const url =
-  "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/";
+  "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw";
 
 const TelaMatch = () => {
 
 const [listMatch, setListaMatch] = useState([]);
 
+
   // função que recebe um api que retorna um array dos perfils que deram match
   const getMatches = () => {
     axios
-      .get(`${url}matches`)
+      .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/matches" 
+        
+      )
       .then((res) => {
         setListaMatch(res.data.matches);
       })
       .catch((err) => {
-        console.log(err.data.matches);
+        console.log(err.response, "Deu ruim!");
       });
   };
+
+  
 
   //função que recebe uma api para limpar os matches
   const putClear = () => {
@@ -56,22 +66,25 @@ const [listMatch, setListaMatch] = useState([]);
     getMatches();
   }, []);
 
-  const ListaLikes = listMatch.map((gostei)=>{
+  const paginaLikes = listMatch.map((gostei)=>{
     return (
     <div>
-    <ContainerListaMatchs>{gostei.photo}</ContainerListaMatchs>
-    <ContainerListaMatches>{gostei.name}</ContainerListaMatches>
+    <img src={gostei.photo}></img>
+    <ContainerListaLikes>{gostei.name}</ContainerListaLikes>
    
     </div>
  )
   })
-
+// console.log(listMatch,"array")
 
 
   return (
     <PaiListaMatch>
-      <h2>Matches</h2>
-      <ContainerListaMatches>{ListaLikes}</ContainerListaMatches>
+      <h2> Lista Matches</h2>
+      {/* <button onClick={putClear}>Clear</button> */}
+      <ContainerListaLikes>{paginaLikes}</ContainerListaLikes>
+      
+
     </PaiListaMatch>
   );
 };
