@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { ContainerLike, ContainerDeslike } from "./StyledInicial";
-
 const url = `https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/`;
 //estilização
 //Container Pai de todos
@@ -22,20 +21,19 @@ const AbaixoMain = styled.div`
 `;
 
 // container da foto não está sendo usado para nada apenas para deixar mais fácil a visualização
-const FotoPerfil = styled.img`
-  /* display: flex; */
-`;
+const FotoPerfil = styled.img``;
 
 // estilização para todas as informações dentro sendo nome idade bio e botões
 const CardPerfil = styled.div`
-  width: 30%;
-  /* height: 30rem; */
+  width: 20rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   background-color: lightcyan;
-  border-color: black;
+  border: 1px solid lightblue;
+  border-radius: 30%;
   align-items: center;
 
   img {
@@ -57,7 +55,9 @@ const TelaInicial = () => {
   //função que está recebendo da api as informações de idade foto e biografia
   const getProfiletoChoose = () => {
     axios
-      .get("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/person")
+      .get(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/person"
+      )
       .then((res) => {
         setProfile(res.data.profile);
       })
@@ -73,7 +73,10 @@ const TelaInicial = () => {
       boolean: boolean,
     };
     axios
-      .post("https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/choose-person",body)
+      .post(
+        "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/matheus-moura-shaw/choose-person",
+        body
+      )
       .then(() => {
         getProfiletoChoose();
       })
@@ -91,10 +94,8 @@ const TelaInicial = () => {
     <Main>
       {profile ? (
         <AbaixoMain>
-                <h2>AstroMatch</h2>
+          <h2>AstroMatch</h2>
           <CardPerfil>
-      
-
             <FotoPerfil src={profile.photo} />
             <p>
               {profile.name} - {profile.age}Anos

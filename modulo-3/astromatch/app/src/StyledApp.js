@@ -26,6 +26,7 @@ export const swipeLeft = keyframes`
   }
 `;
 export const ContainerCardApp = styled.div`
-background-color: #a90b80;
+/* background-color: #a90b80; */
+border-radius: 20px;
 
 `
