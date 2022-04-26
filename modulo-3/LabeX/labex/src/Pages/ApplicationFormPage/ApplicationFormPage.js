@@ -1,6 +1,7 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-
+import {goBack} from "../../Routes/coordinator"
 
 
 const Main = styled.div`
@@ -28,6 +29,12 @@ const ContainerLista = styled.label`
 
 
 const ApplicationFormPage = () =>{
+
+    const navigate = useNavigate()
+
+   
+
+
     return(
         <Main>
             <ContainerLista>
@@ -42,7 +49,7 @@ const ApplicationFormPage = () =>{
             <input placeholder="Profissão"></input>
             </ContainerLista>
 
-
+            <button onClick={()=> goBack(navigate)}>Voltar</button>
 
 
         </Main>

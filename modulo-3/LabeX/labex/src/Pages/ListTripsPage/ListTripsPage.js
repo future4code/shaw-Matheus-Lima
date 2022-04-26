@@ -1,42 +1,70 @@
-import React from "react"
-import styled from "styled-components"
+import React, { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+import { goBack, goToApplicationFormPage } from "../../Routes/coordinator";
+import axios from "axios";
+import { BASE_URL } from "../../Constant/Constant";
 
 const MainList = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
-
-`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 const CardViagens = styled.div`
+  box-shadow: rgb(0 0 0 / 40%) 0px 4px 8px 0px;
+`;
 
-box-shadow: rgb(0 0 0 / 40%) 0px 4px 8px 0px;
+const ListTripsPage = () => {
+  const [TripsValor, setTrips] = useState([]);
 
-`
+  const getTrips = () => {
+    axios
+      .get(`${BASE_URL}/trips`)
+      .then((res) => {
+        setTrips(res.data.trips);
+        console.log(res.data.trips);
+      })
+      .catch((erro) => {
+        console.log(erro.message);
+      });
+  };
 
+  console.log(getTrips);
 
+  const navigate = useNavigate();
 
-const ListTripsPage = () =>{
-    return(
-        <MainList>
+  const tripsList = TripsValor ? TripsValor.map((trips ) => {
+    return ( 
+      <CardViagens key={trips.id}>
+        
+        <h3>Nome: {trips.name}</h3>
+        <p>Descrição: {trips.description}</p>
+        <p>Planeta: {trips.planet}</p>
+        <p>Duração em dias: {trips.durationInDays}</p>
+        <p>Dia: {trips.date}</p>
+      </CardViagens>
+      
+    );
+  }):<span></span>
 
-            <div>
-            <button>Voltar</button> <button>Escreva-se</button>
-            
-            </div>
-            <h1>Lista de Viagens</h1>
-             <CardViagens>
-                 loremipsunasiuodhyaisduyhbas<br></br>
-                 asdohiuaosudhauoshdoauhsdouahsd<br></br>
-                 aisudhaiushdiuahsdiaushdiashdiausdh<br></br>
-                 <br></br>
-                 asiudhaiushdiuashdiuashdiaushdiuashd
+  useEffect(()=>{
+    getTrips()
+  },[])
 
+  console.log(tripsList);
 
-             </CardViagens>
-        </MainList>
+  return (
+    <MainList>
+      <div>
+        <button onClick={() => goBack(navigate)}>Voltar</button>
+        <button onClick={() => goToApplicationFormPage(navigate)}>
+          Escreva-se
+        </button>
+      </div>
+      <h1>Lista de Viagens</h1>
+      <div>{tripsList}</div>
+    </MainList>
+  );
+};
 
-    )
-
-}
-
-export default ListTripsPage
+export default ListTripsPage;

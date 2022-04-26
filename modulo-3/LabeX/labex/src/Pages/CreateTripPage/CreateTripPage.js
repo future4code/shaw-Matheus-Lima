@@ -1,6 +1,7 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-
+import {goBack} from "../../Routes/coordinator"
 
 const MainCreate = styled.div`
 display: flex;
@@ -33,6 +34,8 @@ margin: 20px;
 
 const CreateTripPage = () =>{
 
+    const navigate = useNavigate()
+    
    
   
 
@@ -51,7 +54,7 @@ const CreateTripPage = () =>{
             
             </ContainerLabel>
 <ContainerBotoes>
-        <button>Voltar</button> <button>Criar</button>
+        <button onClick={()=> goBack(navigate)}>Voltar</button> <button>Criar</button>
 
         </ContainerBotoes>
 

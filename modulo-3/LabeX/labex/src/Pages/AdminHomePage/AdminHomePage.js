@@ -1,6 +1,7 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-
+import {goToCreateTripPage, goBack,goToTripDetailsPage} from "../../Routes/coordinator"
 
 const MainAdmin = styled.div`
 display: flex;
@@ -14,7 +15,6 @@ height: 32.10rem;
 const ContainerBotes = styled.div`
 display: flex;
 
-justify-content: space-between;
 `
 
 
@@ -40,19 +40,24 @@ const CardAdmin = styled.div`
 
 const AdminHomePage = () =>{
 
+    const navigate = useNavigate()
+
+
+
+
     return(
         <MainAdmin>
         <div>
     <h2>Painel de Administração</h2>
         </div>
         <ContainerBotes>
-        <button>Voltar</button>
-        <button>Criar Viagem</button>
+        <button onClick={() => goBack(navigate)}>Voltar</button>
+        <button onClick={()=> goToCreateTripPage(navigate)}>Criar Viagem</button>
         <button>Logout</button>
         </ContainerBotes>
-        <CardAdmin>
+        <CardAdmin onClick={goToTripDetailsPage}>
 
-           asdasd
+           
         </CardAdmin>
 
 
