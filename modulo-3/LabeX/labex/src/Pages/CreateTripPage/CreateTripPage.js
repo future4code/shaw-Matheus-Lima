@@ -1,7 +1,12 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
-import {goBack} from "../../Routes/coordinator"
+import { goBack } from "../../Routes/coordinator"
+import { useEffect } from "react"
+import useProtectPage from "../../Hooks/UseProtectPage"
+
+
+
 
 const MainCreate = styled.div`
 display: flex;
@@ -32,31 +37,35 @@ margin: 20px;
 
 
 
-const CreateTripPage = () =>{
+const CreateTripPage = () => {
+
 
     const navigate = useNavigate()
-    
-   
-  
+    // atenção na forma de passar a url pois pode não funcionar
+    const token = localStorage.getItem("token")
 
-    return(
+    useProtectPage()
+
+
+
+    return (
         <MainCreate>
- 
-            <ContainerLabel>
-            <input placeholder="Nome"></input>
-            
-            <select>
-                <option> Escolha um planeta</option>
-            </select>
-           
-            <input placeholder="Descrição"></input>
-            <input placeholder="Duração em dias" type={"number"}></input>
-            
-            </ContainerLabel>
-<ContainerBotoes>
-        <button onClick={()=> goBack(navigate)}>Voltar</button> <button>Criar</button>
 
-        </ContainerBotoes>
+            <ContainerLabel>
+                <input placeholder="Nome"></input>
+
+                <select>
+                    <option> Escolha um planeta</option>
+                </select>
+
+                <input placeholder="Descrição"></input>
+                <input placeholder="Duração em dias" type={"number"}></input>
+
+            </ContainerLabel>
+            <ContainerBotoes>
+                <button onClick={() => goBack(navigate)}>Voltar</button> <button>Criar</button>
+
+            </ContainerBotoes>
 
         </MainCreate>
 

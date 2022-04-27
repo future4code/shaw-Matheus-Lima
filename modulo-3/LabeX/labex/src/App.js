@@ -1,17 +1,16 @@
-import React from "react";
-
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Router from "./Routes/Router";
 
 
-const App =() =>{
 
-return (
-  <div>
-      <Router/>
-  </div>
-);
+const App = () => {
+  return (
+    <div>
+      <Router />
+    </div>
+  );
+};
 
-}
-
-
-export default App
+document.title = "LabeX Viagens";
+export default App;

@@ -1,8 +1,9 @@
-import React from "react"
+import React  from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import {goToCreateTripPage, goBack,goToTripDetailsPage} from "../../Routes/coordinator"
-
+import { useEffect } from "react"
+import useProtectPage from "../../Hooks/UseProtectPage"
 const MainAdmin = styled.div`
 display: flex;
 justify-content: center;
@@ -37,12 +38,9 @@ const CardAdmin = styled.div`
 
 
 
-
 const AdminHomePage = () =>{
-
     const navigate = useNavigate()
-
-
+    useProtectPage()
 
 
     return(
@@ -51,11 +49,11 @@ const AdminHomePage = () =>{
     <h2>Painel de Administração</h2>
         </div>
         <ContainerBotes>
-        <button onClick={() => goBack(navigate)}>Voltar</button>
+        {/* <button onClick={() => goBack(navigate)}>Voltar</button> */}
         <button onClick={()=> goToCreateTripPage(navigate)}>Criar Viagem</button>
         <button>Logout</button>
         </ContainerBotes>
-        <CardAdmin onClick={goToTripDetailsPage}>
+        <CardAdmin onClick={() =>goToTripDetailsPage(navigate)}>
 
            
         </CardAdmin>

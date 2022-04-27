@@ -1,8 +1,10 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { BASE_URL } from "../../Constant/Constant";
 import {goBack} from "../../Routes/coordinator"
-
+import useProtectPage from "../../Hooks/UseProtectPage";
 const MainTrip = styled.div`
   display: flex;
   flex-direction: column;
@@ -28,10 +30,31 @@ const CardTrip = styled.div`
 
 
 const TripDetailsPage = () => {
-
 const navigate = useNavigate()
+const token = localStorage.getItem("token")
+
+useProtectPage()
 
 
+const getTripDetalis= () =>{
+  axios.get(`${BASE_URL}/trip/id`,{
+    headers:{
+    auth:token
+  }})
+  .then((res)=>{
+    console.log(res.data)
+    
+  })
+  .catch((err)=>{
+    console.log(err.res)
+
+  })
+
+}
+
+useEffect(()=>{
+  getTripDetalis()
+},[])
 
 
   return (

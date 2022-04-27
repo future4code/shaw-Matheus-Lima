@@ -16,6 +16,21 @@ const CardViagens = styled.div`
 
 const ListTripsPage = () => {
   const [TripsValor, setTrips] = useState([]);
+  const navigate = useNavigate();
+
+// atenção na forma de passar a url pois pode não funcionar
+const token = localStorage.getItem("token")
+
+useEffect(()=>{
+  if(token === null){
+    console.log("Você não está logado")
+    navigate("/LoginPage")
+  }
+
+},[])
+
+
+
 
   const getTrips = () => {
     axios
@@ -31,7 +46,7 @@ const ListTripsPage = () => {
 
   console.log(getTrips);
 
-  const navigate = useNavigate();
+
 
   const tripsList = TripsValor ? TripsValor.map((trips ) => {
     return ( 
