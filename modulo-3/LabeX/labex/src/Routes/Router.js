@@ -1,33 +1,28 @@
-import ListTripsPage from "../Pages/ListTripsPage/ListTripsPage"
+import AdiminHomePage from "../Pages/AdminHomePage/AdminHomePage";
 import ApplicationFormPage from "../Pages/ApplicationFormPage/ApplicationFormPage";
-import LoginPage from "../Pages/LoginPage/LoginPage"
-import AdminHomePage from "../Pages/AdminHomePage/AdminHomePage"
-import CreateTripPage from "../Pages/CreateTripPage/CreateTripPage"
-import TripDetailsPage from "../Pages/TripDetalisPage/TripDetailsPage";
-import Home from "../Pages/Home/Home";
+import CreateTripPage from "../Pages/CreateTripPage/CreateTripPage";
+import HomePage from "../Pages/HomePage/HomePage";
+import ListTripsPage from "../Pages/ListTripsPage/ListTripsPage";
+import LoginPage from "../Pages/LoginPage/LoginPage";
+import TripDetailsPage from "../Pages/TripDetailsPage/TripDetailsPage";
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import React from "react";
 
 
-
-const Router = () =>{
+export const Router = ()=> {
+    
     return(
         <BrowserRouter>
         <Routes>
-            
-        <Route index element={ <Home />}/>
-        <Route path="ListTripsPage" element={<ListTripsPage />}/>
-        <Route path="ApplicationFormPage" element={<ApplicationFormPage/>}/>
-        <Route path="LoginPage" element={<LoginPage />}/>
-        <Route path="AdminHomePage" element={<AdminHomePage />}/>
-        <Route path="CreateTripPage" element={<CreateTripPage />}/>
-        <Route path="TripDetailsPage" element={<TripDetailsPage/>}/>
-    
+          <Route index element= {<HomePage/>}/>
+          <Route path="/Inicio" element={<HomePage/>}/>
+          <Route path="/Inicio/Lista-de-Viagens" element={<ListTripsPage/>}/>
+          <Route path="/Inicio/Listade-Viagens/Formulario-de-Inscricao" element={<ApplicationFormPage/>}/>
+          <Route path="/Login" element={<LoginPage/>}/>
+          <Route path="/Area-Adiministrador" element={<AdiminHomePage/>}/>
+          <Route path="/Area-Adiministrador/Detalhes-Viagens" element={<TripDetailsPage/>}/>
+          <Route path="/Area-Adiministrador/Criar-Viagem" element={<CreateTripPage/>}/>
         </Routes>
         </BrowserRouter>
-
     )
 }
-
-
-export default Router

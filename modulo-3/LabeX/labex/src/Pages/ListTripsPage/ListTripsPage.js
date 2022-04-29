@@ -1,84 +1,55 @@
-import React, { useState,useEffect } from "react";
+import { Container, CardTrips } from "./style";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import { goBack, goToApplicationFormPage } from "../../Routes/coordinator";
+import { goBack, goToApplicationFormPage } from "../../routes/coordinator";
 import axios from "axios";
-import { BASE_URL } from "../../Constant/Constant";
-
-const MainList = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-const CardViagens = styled.div`
-  box-shadow: rgb(0 0 0 / 40%) 0px 4px 8px 0px;
-`;
+import { url } from "../../constant/constants";
+import { useEffect, useState } from "react";
+import React from "react";
 
 const ListTripsPage = () => {
-  const [TripsValor, setTrips] = useState([]);
+  const [tripList, setTripList] = useState([]);
   const navigate = useNavigate();
-
-// atenção na forma de passar a url pois pode não funcionar
-const token = localStorage.getItem("token")
-
-useEffect(()=>{
-  if(token === null){
-    console.log("Você não está logado")
-    navigate("/LoginPage")
-  }
-
-},[])
-
-
-
-
-  const getTrips = () => {
+  
+  const getTrip = () => {
     axios
-      .get(`${BASE_URL}/trips`)
+      .get(`${url}/trips`)
       .then((res) => {
-        setTrips(res.data.trips);
-        console.log(res.data.trips);
+        setTripList(res.data.trips);
       })
-      .catch((erro) => {
-        console.log(erro.message);
+      .catch((err) => {
+        alert("Erro!", err);
       });
   };
 
-  console.log(getTrips);
+  useEffect(() => {
+    getTrip();
+  }, []);
 
-
-
-  const tripsList = TripsValor ? TripsValor.map((trips ) => {
-    return ( 
-      <CardViagens key={trips.id}>
-        
-        <h3>Nome: {trips.name}</h3>
-        <p>Descrição: {trips.description}</p>
-        <p>Planeta: {trips.planet}</p>
-        <p>Duração em dias: {trips.durationInDays}</p>
-        <p>Dia: {trips.date}</p>
-      </CardViagens>
-      
-    );
-  }):<span></span>
-
-  useEffect(()=>{
-    getTrips()
-  },[])
-
-  console.log(tripsList);
-
+  const renderList = tripList ? (
+    tripList.map((trips) => {
+      return (
+        <CardTrips key={trips.id}>
+          <h3>{trips.name}</h3>
+          <p>{trips.description}</p>
+          <p>Planeta: {trips.planet}</p>
+          <p>Tempo de viajem: {trips.durationInDays} dias</p>
+          <p>Data de Embarque: {trips.date}</p>
+        </CardTrips>
+      );
+    })
+  ) : (
+    <p>Erro! Sem viagens</p>
+  );
+  console.log(renderList)
   return (
-    <MainList>
-      <div>
-        <button onClick={() => goBack(navigate)}>Voltar</button>
-        <button onClick={() => goToApplicationFormPage(navigate)}>
-          Escreva-se
-        </button>
-      </div>
+    <Container>
       <h1>Lista de Viagens</h1>
-      <div>{tripsList}</div>
-    </MainList>
+      <div>{renderList}</div>
+      <button onClick={() => goBack(navigate)}>Voltar</button>
+      <button onClick={() => goToApplicationFormPage(navigate)}>
+        Inscrever-se
+      </button>
+    </Container>
   );
 };
 

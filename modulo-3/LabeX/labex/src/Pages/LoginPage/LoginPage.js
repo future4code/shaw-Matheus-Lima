@@ -1,75 +1,80 @@
-import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
-import { BASE_URL } from "../../Constant/Constant";
-import {
-  goToTripDetailsPage1,
-  goBack,
-} from "../../Routes/coordinator";
-const MainLogin = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+import { Container, Header, Logo, I, Title, Inputs, Img, DivInput} from "./style";
+import { useNavigate } from "react-router-dom"
+import { goBack, goToHomePage} from "../../routes/coordinator";
+import React, {useState} from "react";
+import axios from "axios"
+import { url } from "../../constant/constants";
 
-const ContainerInput = styled.label`
-  display: flex;
-  flex-direction: column;
-`;
 
-const ContainerBotao = styled.div`
-  display: flex;
-`;
-
-const LoginPage = () => {
-  const navigate = useNavigate();
-
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+const LoginPage = ()=> {
+  const navigate = useNavigate()
+  const [email, setEmail] = useState ("")
+  const [senha, setSenha] = useState ("")
 
   const onChangeEmail = (event) =>{
     setEmail(event.target.value)
   }
 
-  const onChangePassword = (event) =>{
-    setPassword(event.target.value)
+  const onChangeSenha = (event) => {
+    setSenha(event.target.value)
   }
 
-  const onSubmitLogin = () =>{
-    console.log(email,password)
+  const onSubmitLogin = () => {
     const body = {
       email: email,
-      password: password
+      password: senha
     }
-    axios.post(`${BASE_URL}/login`,body)
-    .then((res)=>{
-      console.log("Sucesso:",res.data.token)
-      localStorage.setItem("token",res.data.token)
-      navigate("/AdminHomePage")
+    axios
+    .post(`${url}/login`, body)
+    .then((response)=> {
+      console.log(response.data.token);
+      localStorage.setItem("token", response.data.token)
+      navigate("/Area-Adiministrador")
     })
     .catch((err)=>{
-      console.log("Erro tente Novamente:",err.res)
+     alert("Senha ou Usuario não cadastrados!",err.response);
     })
-    
+  }
+  const onSubmit = (event) => {
+    event.preventDefault()
+    onSubmitLogin()
   }
 
-
-  return (
-    <MainLogin>
-      <h3>Login</h3>
-      <ContainerInput>
-        <input  placeholder="E-mail" type={"email"} onChange={onChangeEmail} value={email}></input>
-        <input placeholder="Senha" type={"password"} onChange={onChangePassword} value={password}></input>
-      </ContainerInput>
-
-      <ContainerBotao>
-        <button onClick={onSubmitLogin}>Login</button>{" "}
-        <button onClick={() => goBack(navigate)}>Voltar</button>
-      </ContainerBotao>
-    </MainLogin>
-  );
-};
-
-export default LoginPage;
+    return (
+      <div>
+       <Header>
+       <Logo onClick={()=>goToHomePage(navigate)}/>
+       <Title>Labe<span> <I>X</I></span> Viagens</Title>
+       <button onClick={() => goBack(navigate)}>Voltar</button>
+       </Header>
+       <Img />
+       <Container>
+      <div>
+     
+       </div>
+       <div>
+       <h1>Login</h1>
+       <form onSubmit={onSubmit}>
+       <Inputs placeholder="E-mail" 
+       type ="email"
+       value={email}
+       onChange={onChangeEmail}
+       required
+       />
+       <Inputs placeholder="Senha"
+        type ="password"
+        value={senha}
+        onChange={onChangeSenha}
+        required
+        pattern={"^.{5,}"}
+        title={"Senha deve conter mais de 8 digitos"}
+        />
+       <button >Entrar</button>
+       </form>
+       </div>
+       </Container>
+      </div>
+    );
+  }
+  
+  export default LoginPage;

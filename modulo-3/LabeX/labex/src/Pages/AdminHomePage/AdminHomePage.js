@@ -1,70 +1,80 @@
-import React  from "react"
-import { useNavigate } from "react-router-dom"
-import styled from "styled-components"
-import {goToCreateTripPage, goBack,goToTripDetailsPage} from "../../Routes/coordinator"
-import { useEffect } from "react"
-import useProtectPage from "../../Hooks/UseProtectPage"
-const MainAdmin = styled.div`
-display: flex;
-justify-content: center;
-flex-direction: column;
-height: 32.10rem;
-`
+import { Container } from "./style";
+import { useNavigate } from "react-router-dom";
+import React, { useState,useEffect } from "react";
+import { token, useProtectedPage } from "../../constant/constants";
+import axios from "axios";
+import { url } from "../../constant/constants";
+import { CardTrips } from "../ListTripsPage/style";
+
+import {
+  goToCreateTripPage,
+  goToTripDetailsPage,
+} from "../../routes/coordinator";
+
+
+const AdiminHomePage = () => {
+  const navigate = useNavigate();
+  const [tripList, setTripList] = useState([])
+  const [idLixeira, setIdLixeira] = useState("")
+  useProtectedPage()
+
+
+  const getTrip = () => {
+    axios
+      .get(`${url}/trips`)
+      .then((res) => {
+        setTripList(res.data.trips);
+      })
+      .catch((err) => {
+        alert("Erro!", err);
+      });
+  };
+
+  useEffect(() => {
+    getTrip();
+  }, []);
+  const deleteTrip = () =>{
+    axios
+    .delete(`${url}/trips/${idLixeira}`,{headers:{auth:token}})
+    .then(()=>{
+      setIdLixeira([])
+      
+    })
+    .catch((err)=>{
+      console.log(err.res)
+
+    })
+  }
+
+console.log(idLixeira)
+
+  const renderList = tripList ? (
+    tripList.map((trips) => {
+      return (
+        <CardTrips key={trips.id}>
+          <h3 onClick={() => goToTripDetailsPage(navigate)}>{trips.name}</h3>
+          <button value={trips.id}>Delete{() =>deleteTrip()}</button>
+        </CardTrips>
+      );
+    })
+  ) : (
+    <p>Erro! Sem viagens</p>
+  );
+
+  console.log(renderList)
 
 
 
-const ContainerBotes = styled.div`
-display: flex;
+  return (
+    <Container>
+      <h1>Painel Administrativo</h1>
+      
+      <button onClick={() => goToCreateTripPage(navigate)}>Criar Viagem</button>
+      <button>Logout</button>
+      <p>Viagens{renderList}</p>
+      <button onClick={()=> deleteTrip()}>Lixeira</button>
+    </Container>
+  );
+};
 
-`
-
-
-const CardAdmin = styled.div`
-     display: flex;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
-    padding: 10px 20px;
-    border-radius: 4px;
-    margin: 10px 0;
-    align-items: center;
-    justify-content: space-between;
-    width: 460px;
-    &:hover{
-        cursor: pointer;
-        background-color: #b6d4e3;
-    }
-`
-
-
-
-
-
-const AdminHomePage = () =>{
-    const navigate = useNavigate()
-    useProtectPage()
-
-
-    return(
-        <MainAdmin>
-        <div>
-    <h2>Painel de Administração</h2>
-        </div>
-        <ContainerBotes>
-        {/* <button onClick={() => goBack(navigate)}>Voltar</button> */}
-        <button onClick={()=> goToCreateTripPage(navigate)}>Criar Viagem</button>
-        <button>Logout</button>
-        </ContainerBotes>
-        <CardAdmin onClick={() =>goToTripDetailsPage(navigate)}>
-
-           
-        </CardAdmin>
-
-
-
-        </MainAdmin>
-
-
-)
-
-}
-
-export default AdminHomePage
+export default AdiminHomePage;
