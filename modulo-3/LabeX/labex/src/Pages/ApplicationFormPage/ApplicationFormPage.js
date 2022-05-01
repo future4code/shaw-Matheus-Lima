@@ -27,7 +27,6 @@ const ApplicationFormPage = () => {
       });
   };
 
-
   const postApplyToTrip = () => {
     const body = {
       name: nome,
@@ -44,7 +43,7 @@ const ApplicationFormPage = () => {
         setCandidatura("");
         setProfissao("");
         setPais("");
-        alert("Sua requisição foi feita com sucesso, Boa Sorte!")
+        alert("Sua requisição foi feita com sucesso, Boa Sorte!");
       })
       .catch((err) => {
         alert(err.response);

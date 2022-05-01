@@ -5,12 +5,9 @@ import { useNavigate } from "react-router-dom";
 export const url =
   "https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-moura-shaw";
 
-
-  
-  
 export const useProtectedPage = () => {
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const token = localStorage.getItem("token");
 
@@ -31,7 +28,7 @@ export const lugares = [
   "Netuno",
   "Estrela T Tauri",
   "Sistema Planetario Kepler-18",
-  "Quasar APM 08279+5255"
-]
+  "Quasar APM 08279+5255",
+];
 
-export const token = localStorage.getItem('token')
+export const token = localStorage.getItem("token");
