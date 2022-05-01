@@ -1,4 +1,4 @@
-import AdiminHomePage from "../Pages/AdminHomePage/AdminHomePage";
+import AdminHomePage from "../Pages/AdminHomePage/AdminHomePage";
 import ApplicationFormPage from "../Pages/ApplicationFormPage/ApplicationFormPage";
 import CreateTripPage from "../Pages/CreateTripPage/CreateTripPage";
 import HomePage from "../Pages/HomePage/HomePage";
@@ -15,12 +15,11 @@ export const Router = ()=> {
         <BrowserRouter>
         <Routes>
           <Route index element= {<HomePage/>}/>
-          <Route path="/Inicio" element={<HomePage/>}/>
           <Route path="/Inicio/Lista-de-Viagens" element={<ListTripsPage/>}/>
           <Route path="/Inicio/Listade-Viagens/Formulario-de-Inscricao" element={<ApplicationFormPage/>}/>
           <Route path="/Login" element={<LoginPage/>}/>
-          <Route path="/Area-Adiministrador" element={<AdiminHomePage/>}/>
-          <Route path="/Area-Adiministrador/Detalhes-Viagens" element={<TripDetailsPage/>}/>
+          <Route path="/Area-Adiministrador" element={<AdminHomePage/>}/>
+          <Route path="/Area-Adiministrador/Detalhes-Viagens/:id" element={<TripDetailsPage/>}/>
           <Route path="/Area-Adiministrador/Criar-Viagem" element={<CreateTripPage/>}/>
         </Routes>
         </BrowserRouter>

@@ -1,9 +1,13 @@
+import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const url =
   "https://us-central1-labenu-apis.cloudfunctions.net/labeX/matheus-moura-shaw";
 
+
+  
+  
 export const useProtectedPage = () => {
   const navigate = useNavigate();
   

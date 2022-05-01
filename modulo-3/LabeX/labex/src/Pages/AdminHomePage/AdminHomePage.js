@@ -1,10 +1,12 @@
-import { Container } from "./style";
+import { Container,TextoCentro } from "./style";
 import { useNavigate } from "react-router-dom";
 import React, { useState,useEffect } from "react";
 import { token, useProtectedPage } from "../../constant/constants";
 import axios from "axios";
 import { url } from "../../constant/constants";
 import { CardTrips } from "../ListTripsPage/style";
+import Loading from "../../components/Loading"
+import { goToLoginPage } from "../../routes/coordinator";
 
 import {
   goToCreateTripPage,
@@ -15,53 +17,70 @@ import {
 const AdiminHomePage = () => {
   const navigate = useNavigate();
   const [tripList, setTripList] = useState([])
-  const [idLixeira, setIdLixeira] = useState("")
+  const [loading, setLoading] = useState(false)
   useProtectedPage()
 
 
+  // const handleLogOut = () => {
+  //   window.localStorage.removeItem('token')
+  //   goToLoginPage(navigate)
+  // }
+
+console.log(tripList)
+
   const getTrip = () => {
+ 
     axios
       .get(`${url}/trips`)
-      .then((res) => {
-        setTripList(res.data.trips);
+      .then((response) => {
+        setTripList(response.data.trips);
       })
       .catch((err) => {
         alert("Erro!", err);
       });
   };
 
+
+
   useEffect(() => {
     getTrip();
   }, []);
-  const deleteTrip = () =>{
-    axios
-    .delete(`${url}/trips/${idLixeira}`,{headers:{auth:token}})
-    .then(()=>{
-      setIdLixeira([])
-      
-    })
-    .catch((err)=>{
-      console.log(err.res)
 
-    })
-  }
-
-console.log(idLixeira)
-
-  const renderList = tripList ? (
+  // console.log(deleteTrip)
+const renderList = tripList ? (
     tripList.map((trips) => {
       return (
         <CardTrips key={trips.id}>
-          <h3 onClick={() => goToTripDetailsPage(navigate)}>{trips.name}</h3>
-          <button value={trips.id}>Delete{() =>deleteTrip()}</button>
+         
+          <h3 onClick={() => goToTripDetailsPage(navigate,trips.id)}>{trips.name}</h3>
+        
+          <button  onClick={() => deleteTrip(trips.id)}          
+            >Lixeira</button>
         </CardTrips>
       );
     })
   ) : (
     <p>Erro! Sem viagens</p>
   );
+  const deleteTrip = async (id) => {
 
-  console.log(renderList)
+    try {
+      const response = await url.delete(`trips/${id}`, {
+        headers: {
+          auth: token
+        }
+      })
+      console.log(response.data.trips);
+      alert('Viagem excluída com sucesso!')
+      getTrip()
+
+    } catch (error) {
+      console.log(error.response)
+      alert('Erro no delete')
+
+    }
+  }
+  
 
 
 
@@ -70,8 +89,9 @@ console.log(idLixeira)
       <h1>Painel Administrativo</h1>
       
       <button onClick={() => goToCreateTripPage(navigate)}>Criar Viagem</button>
-      <button>Logout</button>
-      <p>Viagens{renderList}</p>
+      {/* <button onClick={()=> handleLogOut()}>Logout</button> */}
+      <p>Viagens</p>
+      {renderList}
       <button onClick={()=> deleteTrip()}>Lixeira</button>
     </Container>
   );

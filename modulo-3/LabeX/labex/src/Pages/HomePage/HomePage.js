@@ -11,15 +11,15 @@ const HomePage = ()=> {
     return (
       <div>
        <Header>
-       <Title>Labe<span> <I>X</I></span> Viagens</Title>
+       <Title>Labe<span> <I>X</I></span></Title>
        <button onClick={() => goToLoginPage(navigate)}>Área Admin</button>
        </Header>
        <DivHome>
-       <PHome>Existem 23 planetas SUPER-HABTAVEIS no nosso universo , nós te levamos até eles na velociadade da luz.</PHome>
+       <PHome/>
        </DivHome>
        <TextHome>
        <Button onClick={() => goToListTripsPage(navigate)}>Ver Viagens</Button>
-       <p> Realize seu sonho de conhecer o desconhecido!<br/>Vá ao espaço com Labe <I>X</I>.</p>
+       <p> Rumo ao desconhecido!<br/>Excelsior <I>X</I>.</p>
        </TextHome>
       
       </div>

@@ -7,3 +7,10 @@ align-items: center;
 border: solid 2px black;
 margin: 2rem;
 `
+
+export const TextoCentro = styled.div`
+display: flex;
+align-items: center;
+
+
+`

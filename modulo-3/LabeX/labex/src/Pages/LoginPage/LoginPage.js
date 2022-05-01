@@ -1,4 +1,4 @@
-import { Container, Header, Logo, I, Title, Inputs, Img, DivInput} from "./style";
+import { Container, Header, Logo, I, Title, Inputs, Img,} from "./style";
 import { useNavigate } from "react-router-dom"
 import { goBack, goToHomePage} from "../../routes/coordinator";
 import React, {useState} from "react";
@@ -43,9 +43,9 @@ const LoginPage = ()=> {
     return (
       <div>
        <Header>
-       <Logo onClick={()=>goToHomePage(navigate)}/>
-       <Title>Labe<span> <I>X</I></span> Viagens</Title>
-       <button onClick={() => goBack(navigate)}>Voltar</button>
+       <Logo  />
+       <Title onClick={()=> goBack(navigate)} >Labe<span> <I>X</I></span> Viagens</Title>
+       
        </Header>
        <Img />
        <Container>

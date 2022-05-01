@@ -2,23 +2,23 @@ import styled from "styled-components"
 
 export const Header = styled.div`
   border: solid 2px black;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  width: 64rem;
+  /* border-top: none; */
+  /* border-left: none; */
+  /* border-right: none; */
+  /* width: 64rem; */
   height: 3rem;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  /* flex-direction: row; */
+  /* justify-content: space-between; */
   align-items: center;
   button {
     width: 7.3rem;
     height: 2.2rem;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     border: solid 1px black;
     color: #01dfd7;
     background-color: #e6e6e6;
-    margin-right: 1rem;
+    /* margin-right: 1rem; */
     font-size: 13px;
     cursor: pointer;
     transition: 0.2s;
@@ -40,8 +40,14 @@ export const Title = styled.p`
   font-family: Tahoma;
   font-weight: 500;
   font-size: large;
-  padding-right: 47rem;
+  /* padding-right: 47rem; */
   cursor: default;
+  :hover {  
+      background-color: #01dfd7;
+      color: #fff;
+      border: solid 3px #01dfd7;
+      cursor: pointer;
+    }
 `;
 
 export const I = styled.i`
@@ -54,10 +60,10 @@ display: flex;
 flex-direction: column;
 align-items: center;
 padding-top: 5rem;
-width: 64rem;
+/* width: 64rem; */
 color: #fff;
 text-shadow: black 0.1em 0.1em 0.2em;
-margin-top: 5rem;
+/* margin-top: 5rem; */
 button {
     margin-top: 1rem;
     width: 5rem;
@@ -88,10 +94,10 @@ margin-top: 1rem;
 color: #fff;
 `
 export const Img=styled.img`
-width: 64rem;
+/* width: 64rem; */
 
 `
 export const DivInput = styled.div`
 position: relative;
-bottom: 45rem;
+/* bottom: 45rem; */
 `

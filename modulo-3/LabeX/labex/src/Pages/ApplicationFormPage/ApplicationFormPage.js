@@ -27,9 +27,6 @@ const ApplicationFormPage = () => {
       });
   };
 
-  useEffect(() => {
-    getTrip();
-  }, []);
 
   const postApplyToTrip = () => {
     const body = {
@@ -47,11 +44,17 @@ const ApplicationFormPage = () => {
         setCandidatura("");
         setProfissao("");
         setPais("");
+        alert("Sua requisição foi feita com sucesso, Boa Sorte!")
       })
       .catch((err) => {
         alert(err.response);
       });
   };
+
+  useEffect(() => {
+    getTrip();
+  }, []);
+
   const onChangeNome = (event) => {
     setNome(event.target.value);
   };

@@ -15,7 +15,8 @@ export const CardTrips = styled.div`
   padding: 2rem 2rem;
   border-radius: 3rem;
   margin: 10px 0;
-  align-items:flex-start ;
+  align-items:center ;
   justify-content: space-between;
   width: 30rem;
+ 
 `;
