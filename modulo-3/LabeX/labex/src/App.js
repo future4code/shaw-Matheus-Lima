@@ -1,37 +1,32 @@
+import { Router} from "./routes/Router";
 import React from "react";
-import Home from "./Pages/Home/Home";
-import ListTripsPage from "./Pages/ListTripsPage/ListTripsPage";
-import ApplicationFormPage from "./Pages/ApplicationFormPage/ApplicationFormPage";
-import LoginPage from "./Pages/LoginPage/LoginPage"
-import AdminHomePage from "./Pages/AdminHomePage/AdminHomePage"
-import CreateTripPage from "./Pages/CreateTripPage/CreateTripPage"
-import TripDetailsPage from "./Pages/TripDetalisPage/TripDetailsPage";
+import styled from "styled-components"
 
-const App =() =>{
+const Container = styled.div`
+margin: auto;
+`
+const App = ()=> {
+  document.title = "LabeX Viagens"
 
-return(
-<div>
- {/* <Home/> */}
-
-
-{/* <ListTripsPage/> */}
-
-
-{/* <ApplicationFormPage/> */}
-
-{/* <LoginPage/>    */}
-
-{/* <AdminHomePage/> */}
-
-{/* <CreateTripPage/> */}
-
-
-<TripDetailsPage/>
-</div>
-
-)
-
+  // const navigate = useNavigate();
+  
+  // useProtectedPage = () => {
+  //   useEffect(() => {
+  //     const token = localStorage.getItem("token");
+  
+  //     if (token === null) {
+  //       alert("Usuario não logado. Faça seu login para continuar!")
+  //       navigate("/Login");
+  //     }
+  //   }, []);
+  
+  // }
+  
+  return (
+    <Container>
+      <Router/>
+    </Container>
+  );
 }
 
-
-export default App
+export default App;
