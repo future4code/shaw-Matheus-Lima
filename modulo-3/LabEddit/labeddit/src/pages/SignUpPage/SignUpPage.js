@@ -1,15 +1,18 @@
 import React from "react";
+import Headers from "../../components/Headers/Headers"
+import SignUpForm from "./SignUpForm";
+
+
+
+
+
 
 const SignUpPage = () =>{
     return(
         <div>
-            <h2>Olá boas Vindas ao LabEddit!</h2>
-
-            <input placeholder="Nome de usuário"></input>
-            <input placeholder="Email"></input>
-            <input placeholder="Senha"></input>
-
-            <button>Cadastrar</button>
+            <Headers/>
+           <SignUpForm/>
+           
         </div>
     )
 }

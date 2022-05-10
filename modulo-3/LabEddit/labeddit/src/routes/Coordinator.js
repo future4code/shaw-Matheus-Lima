@@ -9,8 +9,8 @@ export const goBack = (Navigate) =>{
 
 }
 
-export const goPostPage = (Navigate) =>{
-    Navigate("/Feed/Post")
+export const goPostPage = (Navigate,id) =>{
+    Navigate(`/Feed/Post/${id}`)
 }
 
 export const goSignupPage = (Navigate) =>{
