@@ -5,11 +5,7 @@ export const ContainerLogo = styled.img`
 height: 346px;
 width: 380px;
 display: flex;
-
-
 `
-
-
 
 export const ContainerInputs = styled.input`
 display: flex;

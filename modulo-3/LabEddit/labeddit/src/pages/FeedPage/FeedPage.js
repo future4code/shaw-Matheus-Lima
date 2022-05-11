@@ -1,13 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Headers from "../../components/Headers/Headers";
+import useProtectPage from "../../hooks/useProtectPage";
 import { goPostPage } from "../../routes/Coordinator";
+import Headers from "../../components/Headers/Headers";
+
 
 const FeedPage = () =>{
     const Navigate = useNavigate
+    useProtectPage()
     return(
-        <div>
+        <div>  
             <Headers/>
+            
             FeedPage
 
 

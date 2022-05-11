@@ -1,18 +1,19 @@
-import { Navigate } from "react-router-dom"
+export const goToFeedPage = (navigate) => {
+  navigate("/Login/Feed");
+};
 
-export const goToFeedPage = (Navigate) =>{
-    Navigate("/Login/Feed")    
-}
+export const goBack = (navigate) => {
+  navigate(-1);
+};
 
-export const goBack = (Navigate) =>{
-    Navigate(-1)
+export const goPostPage = (navigate, id) => {
+  navigate(`/Feed/Post/${id}`);
+};
 
-}
+export const goSignupPage = (navigate) => {
+  navigate("/Login/SignUp");
+};
 
-export const goPostPage = (Navigate,id) =>{
-    Navigate(`/Feed/Post/${id}`)
-}
-
-export const goSignupPage = (Navigate) =>{
-    Navigate("/Login/SignUp")
-}
+export const goToLoginPage = (navigate) => {
+  navigate("/");
+};

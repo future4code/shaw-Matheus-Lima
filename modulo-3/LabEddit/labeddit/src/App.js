@@ -1,24 +1,15 @@
-import React from "react"
+import React, { useState } from "react";
+import { BrowserRouter } from "react-router-dom";
+import { ContainerHeader } from "./components/Headers/styled";
 import { Router } from "./routes/Router";
-import styled from "styled-components"
 
-// const Container = styled.div`
-// margin: 0; 
-// padding: 0; 
-// border: 0; 
-// font-size: 100%; 
-// font: inherit; 
-// vertical-align: baseline;
-// `
-
-
-
-const  App = () => {
+const App = () => {
   return (
     <div>
-     <Router/>
+      <Router />
     </div>
   );
-}
+};
 
+// tirando o browser router para poder passar por props o container header até chegar no user para ele fazer a troca de login para logout
 export default App;
