@@ -28,3 +28,34 @@ export const signUp = async (body, clear, navigate) => {
     console.log(err.response.data.message);
   }
 };
+
+// export const postUp = (body, clear) => {
+
+//   axios.post(`${Base_URL}/posts`, body, {
+//     headers: {
+//       Authorization: window.localStorage.getItem("token"),
+//     }
+//   })
+//   .then((res)=>{
+//     alert(res.data);
+//     clear()
+//   }).catch((err)=>{
+//     alert(err.data);
+//   })
+// }
+
+export const postUpp = (body, clear) => {
+  axios
+    .post(`${Base_URL}/posts`, body, {
+      headers: { Authorization: window.localStorage.getItem("token") },
+    })
+    .then((response) => {
+      alert(response.data);
+      clear()
+    })
+    .catch((err) => {
+      console.log(err.data);
+    });
+};
+
+

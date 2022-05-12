@@ -1,13 +1,15 @@
 import React from "react";
 import Headers from "../../components/Headers/Headers";
 import useProtectPage from "../../hooks/useProtectPage";
+import {useParams} from "react-router-dom"
 
 const PostPage = () =>{
     useProtectPage()
-    return(
-        <div>
+    const params =  useParams()
+    
+    return(<div>
             <Headers/>
-            <input>Escreva seu post</input>
+            
             <button>Postar</button>
         </div>
     )

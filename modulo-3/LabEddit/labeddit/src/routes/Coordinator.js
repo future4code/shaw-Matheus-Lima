@@ -6,8 +6,8 @@ export const goBack = (navigate) => {
   navigate(-1);
 };
 
-export const goPostPage = (navigate, id) => {
-  navigate(`/Feed/Post/${id}`);
+export const goPostPage = (navigate,id) => {
+  navigate(`/Post/${id}`);
 };
 
 export const goSignupPage = (navigate) => {

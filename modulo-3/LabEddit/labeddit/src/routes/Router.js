@@ -8,14 +8,13 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 
 export const Router = () => {
   
-  return (
-    <BrowserRouter>
+  return (<BrowserRouter>
       
       <Routes>
         <Route index element={<LoginPage/>} />
         <Route path="/Login/SignUp" element={<SignUpPage/>} />
         <Route path="/Login/Feed" element={<FeedPage/>} />
-        <Route path="/Feed/Post/:id" element={<PostPage/>} />
+        <Route path="/Post/:id" element={<PostPage/>} />
       </Routes>
       </BrowserRouter>
   );
