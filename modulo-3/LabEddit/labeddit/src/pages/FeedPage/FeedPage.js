@@ -29,8 +29,8 @@ const FeedPage = (props) => {
 
   const feedCard = feeds[0].map((feed) => {
     return (
-      <CardFeedPost
-        key={feed.id}
+      <CardFeedPost 
+        id={feed.id}
         title={feed.title}
         username={feed.username}
         body={feed.body}

@@ -2,6 +2,9 @@ import axios from "axios";
 import { Base_URL } from "../constants/urls";
 import { goToFeedPage } from "../routes/Coordinator";
 
+const auth = { headers: { Authorization: localStorage.getItem("token") } };
+
+
 export const login = async (body, clear, navigate) => {
   try {
     const response = await axios.post(`${Base_URL}/users/login`, body);
@@ -29,20 +32,7 @@ export const signUp = async (body, clear, navigate) => {
   }
 };
 
-// export const postUp = (body, clear) => {
 
-//   axios.post(`${Base_URL}/posts`, body, {
-//     headers: {
-//       Authorization: window.localStorage.getItem("token"),
-//     }
-//   })
-//   .then((res)=>{
-//     alert(res.data);
-//     clear()
-//   }).catch((err)=>{
-//     alert(err.data);
-//   })
-// }
 
 export const postUpp = (body, clear) => {
   axios
@@ -59,3 +49,15 @@ export const postUpp = (body, clear) => {
 };
 
 
+export const createCommentPost = (id ,body, clear) =>{
+  
+  axios
+  .post(`${Base_URL}/posts/${id}/comments`,body,auth)
+  .then(()=>{
+      window.location.reload()
+      clear()
+  })
+  .catch((err)=>{
+      console.log(err.response.data)
+  })
+}

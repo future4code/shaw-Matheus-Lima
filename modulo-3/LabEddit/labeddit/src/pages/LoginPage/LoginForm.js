@@ -1,10 +1,7 @@
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { ContainerLogo, ContainerInputs, Botao } from "./styled";
-import { goToFeedPage, goSignupPage } from "../../routes/Coordinator";
+import { useNavigate } from "react-router-dom";
+import { ContainerInputs, Botao } from "./styled";
 import useForm from "../../hooks/useForms";
-import axios from "axios";
-import { Base_URL } from "../../constants/urls";
 import { login } from "../../services/user";
 
 const LoginPage = () => {
@@ -29,7 +26,7 @@ const LoginPage = () => {
           required
           type={"email"}
         />
-
+        
         <ContainerInputs
           name={"password"}
           value={form.password}
