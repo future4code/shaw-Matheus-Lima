@@ -7,6 +7,9 @@ O projeto é feito através do framework ReactJS, npm como gerenciador de pacote
 O que não funciona
 os comentários e a adição de comentários nos posts não estão funcionando.
 
+Surge
+https://successful-nerve.surge.sh
+
 
 
 Pronto, agora você estará rodando o projeto localmente.
