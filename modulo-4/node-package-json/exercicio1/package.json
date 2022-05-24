@@ -1,0 +1,17 @@
+{
+  "name": "aula-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start":"node ./index.js", 
+    "addTarefa":"node ./novaTarefa.js", 
+    "add":"node ./add.js",
+    "sub":"node ./sub.js",
+    "mult":"node ./mult.js",
+    "div":"node ./div.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matheus Moura",
+  "license": "ISC"
+}
