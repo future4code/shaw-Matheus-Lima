@@ -57,17 +57,15 @@ app.put ("/afazeres/troca/:idTarefa",(req,res)=>{
 })
 
 
-app.delete ("/afazeres/:idTarefa",(req,res)=>{
+app.delete("/afazeres/:idTarefa", (req, res) => {
+  const idTarefa: Number = Number(req.params.idTarefa)
 
-   afazeres.filter((tarefa)=>{
-    if(Number(req.params.idTarefa) === tarefa.id) {
-      return afazeres.splice(tarefa.id -1, 1)
-    }
-    res.send(afazeres)
+  const afazresdel = afazeres.filter((tarefa) => {
+    idTarefa !== tarefa.id
+    res.send(afazresdel)
     console.log("Tarefa Deletada!")
   })
 })
-
 
 app.get ("/afazeres/user/:idUser",(req,res)=>{
   const idFiltrado = afazeres.filter((tarefa)=>{
