@@ -1,6 +1,7 @@
 import express from "express"
 import cors from "cors"
 import { ListaBanco } from "./data"
+import { type } from "os"
 
 const app = express()
 app.use(express.json())
@@ -48,11 +49,12 @@ export type Account = {
 }
 
 
-export type Saldo = {
+
+export type Saldo = [{
     valorPag: number,
     descrPag: string,
     dayPay: string
-}
+}]
 
 
 // retorna todos os usuários do banco 
@@ -87,7 +89,7 @@ app.post("/users", (req, res) => {
             saldoDebit: saldoDebit,
             extrato: extrato
         }
-        if(!name || !cpf || !birth || !saldoDebit){
+        if (!name || !cpf || !birth || !saldoDebit) {
             throw new Error("Campos não foram preenchidos corretamente por favor preencha novamente!")
         }
 
@@ -102,9 +104,9 @@ app.post("/users", (req, res) => {
             case "Somente maiores de 18 anos podem criar a conta no banco!":
                 res.status(400)
                 break;
-                case "Campos não foram preenchidos corretamente por favor preencha novamente!":
-                    res.status(400)
-                    break
+            case "Campos não foram preenchidos corretamente por favor preencha novamente!":
+                res.status(400)
+                break
 
             default:
                 break;
@@ -115,41 +117,116 @@ app.post("/users", (req, res) => {
 })
 
 
-app.get("/saldo/:cpf/:name",(req,res)=>{
+app.get("/saldo/:cpf/:name", (req, res) => {
     try {
-          const {cpf, name} = req.params
-    
-          if(!cpf || !name){
-        throw new Error("Dados em Falta por favor escreva novamente!")
-    }
+        const { cpf, name } = req.params
 
-    const filtroSaldo = ListaBanco.filter((user)=>{
-        if (cpf === user.cpf && name === user.name)
-        return user.saldoDebit
-    })
-
-    const saldoFiltrado = filtroSaldo.map((saldo)=>{
-        if(saldo !== undefined){
-            return saldo.saldoDebit
+        if (!cpf || !name) {
+            throw new Error("Dados em Falta por favor escreva novamente!")
         }
-    })
-    res.status(200).send(saldoFiltrado)
-        
-    } catch (error:any) {
+
+        const filtroSaldo = ListaBanco.filter((user) => {
+            if (cpf === user.cpf && name === user.name)
+                return user.saldoDebit
+        })
+
+        const saldoFiltrado = filtroSaldo.map((saldo) => {
+            if (saldo !== undefined) {
+                return saldo.saldoDebit
+            }
+        })
+        res.status(200).send(saldoFiltrado)
+
+    } catch (error: any) {
         switch (error.message) {
 
             case "Dados em Falta por favor escreva novamente!":
                 res.status(400)
                 break;
-        
+
             default:
                 break;
         }
         res.send(error.message)
 
     }
-    
-  
-    
+
+
+
 })
 
+
+app.put("/add-saldo", (req, res) => {
+    try {
+        const { cpf, name, saldoDebit } = req.body
+        if (!name || !cpf || !saldoDebit) {
+            throw new Error("Alguns dados estão em falta por favor escreva novamente!")
+        }
+
+        const addSaldoConta = ListaBanco.map((user) => {
+            if (user.name === name && user.cpf === cpf) {
+                return user.saldoDebit = user.saldoDebit + saldoDebit
+            }
+        })
+
+        const addSaldoFiltrado = addSaldoConta.filter((user) => {
+            if (user !== undefined) {
+
+                return user
+            }
+        })
+
+        res.status(200).send("Saldo Adicionado:" + addSaldoFiltrado)
+
+    } catch (error: any) {
+        switch (error.message) {
+            case "Alguns dados estão em falta por favor escreva novamente!":
+                res.status(400)
+                break;
+            default:
+                res.status(500)
+                break;
+        }
+        res.send(error.message)
+
+    }
+})
+
+
+app.put("/pagar-conta", (req, res) => {
+    try {
+
+        const { cpf, saldoDebit, birth, descrPag } = req.body
+
+        if (!cpf || !saldoDebit || !descrPag) {
+            throw new Error("Dados passados estão em falta por favor Preencha novamente!")
+        }
+        
+       
+
+        const novaOper: any = {
+            cpf: cpf,
+            saldoDebit: saldoDebit,
+            birth: birth,
+            descrPag: descrPag
+        }
+
+        const extrato = ListaBanco.find((user) => {
+            return user.extrato.push(novaOper)
+        })
+        res.status(200).send(extrato)
+
+    } catch (error:any) {
+        switch (error.message) {
+            case "Dados passados estão em falta por favor Preencha novamente!":
+                res.status(400)
+                break;
+
+            default:
+                res.status(500)
+                break;
+        }
+        res.send(error.message)
+
+    }
+})
