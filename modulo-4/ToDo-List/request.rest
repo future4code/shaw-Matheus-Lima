@@ -1,0 +1,11 @@
+POST http://localhost:3003/registration
+content-type: application/json
+
+{
+    "name": "Jorge",
+    "nickname": "Jorginho",
+    "email": "jogao@gmail.com"
+    
+}
+
+
