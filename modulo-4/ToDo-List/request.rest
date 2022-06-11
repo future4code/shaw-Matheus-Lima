@@ -9,3 +9,29 @@ content-type: application/json
 }
 
 
+###
+
+GET http://localhost:3003/user/123123
+
+
+###
+
+PUT http://localhost:3003/user/edit/g9oleiun
+content-type: application/json
+
+{
+    "name": "Aragão",
+    "nickname": "Renato"
+
+}
+
+###
+POST  http://localhost:3003/task
+content-type: application/json
+
+{   
+    "title": "Criar banco dos alunos",
+    "description":"Devemos criar o banco dos alunos para o módulo do backend",
+    "limit_date": "2022/12/10",
+    "creator_user_id":"g9oleiun",
+}
