@@ -122,53 +122,92 @@ app.put("/user/edit/:id", async (req, res) => {
 
 })
 
+// endpoint para criar tarefas com id do users
+app.post("/task", async (req: Request, res: Response) => {
+    try {
+        const { title, description } = req.body
 
-app.post("/task", async (req: Request, res: Response)=>{
-try {
-const {title, description , limit_date, creator_user_id } = req.body
+        if (!title || !description) {
+            throw new Error("Dados inválidos Escreva-novamente!")
+        }
 
-if(!title || !description || !limit_date || !creator_user_id){
-    throw new Error ("Dados inválidos Escreva-novamente!")
-}
+        const dateDiff: number = moment(req.body.limit_date, "DD/MM/YYYY").unix()
+        console.log(dateDiff)
 
-const dateDiff: number = moment(req.body.limit_date, "DD/MM/YYYY").unix()
-console.log(dateDiff)
+        // if(dateDiff <= 0){
+        //     throw new Error ("Impossível criar deadlines que já foram passadas!")
+        // }
 
-if(dateDiff <= 0){
-    throw new Error ("Impossível criar deadlines que já foram passadas!")
-}
+        const id = Math.floor(Date.now() * Math.random()).toString(36)
 
-const id = Math.floor(Date.now() * Math.random()).toString(36)
+        await connection("TodoListTask")
+            .insert({
+                id,
+                title: req.body.title,
+                description: req.body.description,
+                limit_date: moment(req.body.deadline, 'DD/MM/YYYY').format('YYYY-MM-DD'),
+                creator_user_id: req.body.createId
+            })
+        res.status(200).send({
+            message: "Tarefa Criada!",
+            id
 
-await connection("TodoListTask")
-.insert({
-    id,
-    title:req.body.title,
-    description:req.body.description,
-    limit_date: req.body.deadline,
-    creator_user_id: req.body.createId
-})
-res.status(200).send({
-    message:"Tarefa Criada!",
-    id,
-    deadline: req.body.deadline
+        })
 
-})
 
-    
-} catch (error:any) {
+    } catch (error: any) {
 
-    switch (error.message) {
-        case "Dados inválidos Escreva-novamente!":
-            res.status(400)
-            break;
-    
-        default:
-            res.status(500).send(error.sqlMessage)
-            break;
+        switch (error.message) {
+            case "Dados inválidos Escreva-novamente!":
+                res.status(400)
+                break;
+
+            default:
+                res.status(500).send(error.sqlMessage)
+                break;
+        }
+
+        res.send(error.message)
     }
-    
-    res.send(error.message)
-}
+
+})
+
+
+// pega tarefas pelo id 
+
+app.get("/getTask/:id", async (req, res): Promise<any> => {
+    try {
+
+        const [result] = await connection("TodoListTask")
+        .join('Users', 'TodoListTask.creator_user_id', 'Users.id')
+        .select("TodoListTask.*", "Users.id as creatorUserId", "Users.nickname as creatorUserNickname" )
+        .where('TodoListTask.id', (req.params.id))
+
+        if (!result) {
+            throw new Error("Tarefa não encontrada!")
+        }
+
+        res.status(200).send({
+            id:result.id,
+            title:result.title,
+            description: result.description,
+            limit_date: moment(result.limit_date,'YYYY-MM-DD').format('DD/MM/YYYY'),
+            creator_user_id: result.creator_user_id,
+            creatorUserNickname: result.authorNickname
+        })
+
+    } catch (error: any) {
+        switch (error.message) {
+            case "Tarefa não encontrada!":
+                res.status(404)
+                break;
+
+            default:
+                res.status(500).send(error.message || error.sqlMessage)
+                break;
+        }
+        res.send(error.message)
+
+    }
 
 })
