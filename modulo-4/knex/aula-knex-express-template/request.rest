@@ -1,0 +1,12 @@
+GET http://localhost:3003/actor/Glória
+
+###
+
+GET http://localhost:3003/actor-gender
+
+###
+PUT http://localhost:3003/actor/salary/001
+
+{
+    salary: 30000
+}
