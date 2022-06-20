@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start":"node ./index.js", 
-    "addTarefa":"node ./novaTarefa.js", 
-    "add":"node ./add.js",
-    "sub":"node ./sub.js",
-    "mult":"node ./mult.js",
-    "div":"node ./div.js",
+    "addTarefa":"node ./exercicio3/novaTarefa.js", 
+    "add":"node ./exercicio2/add.js",
+    "sub":"node ./exercicio2/sub.js",
+    "mult":"node ./exercicio2/mult.js",
+    "div":"node ./exercicio2/div.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Matheus Moura",
