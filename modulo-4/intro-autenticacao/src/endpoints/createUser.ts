@@ -1,10 +1,8 @@
 import { Request, Response } from "express";
 import { UserDatabase } from "../data/UserDatabase";
+import { Authenticator } from "../services/Authenticator";
+import { Generate } from "../services/Generate";
 import { user } from "../types";
-import { v4 } from "uuid";
-import GenereateId from "../services/GenerateId";
-
-
 
 export default async function createUser(
    req: Request,
@@ -13,33 +11,35 @@ export default async function createUser(
    try {
 
       const { name, nickname, email, password } = req.body
-      const userDB = new UserDatabase()
-
+   
       if (!name || !nickname || !email || !password) {
          res.statusCode = 422
          throw new Error("Preencha os campos 'name','nickname', 'password' e 'email'")
       }
 
+      const userDB = new UserDatabase()
       const user = await userDB.getByEmail(email)
-      console.log(user)
+
       if (user) {
          res.statusCode = 409
          throw new Error('Email já cadastrado')
       }
 
-      const id:string = GenereateId()
+      const generate = new Generate()
+      const id: string = generate.generateId()
 
-      console.log("Genereate Id:",id)
+      const newUser: user = { id, name, nickname, email, password }
 
-      const newUser: user = { id, email, password }
+      await userDB.create(newUser)
 
-     await userDB.create(newUser)
+      const authenticator = new Authenticator()
+      const token = authenticator.generateToken({id})
 
-      res.status(201).send({ newUser })
+      res.status(201).send({ newUser, token })
 
    } catch (error: any) {
       if (res.statusCode === 200) {
-         res.status(500).send({ message: "Internal server error" })
+         res.status(500).send({ message: error.message || error.sqlmessage })
       } else {
          res.send({ message: error.message })
       }

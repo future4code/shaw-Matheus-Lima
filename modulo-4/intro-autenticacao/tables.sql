@@ -23,3 +23,6 @@ CREATE TABLE IF NOT EXISTS to_do_list_assignees (
     FOREIGN KEY (task_id) REFERENCES to_do_list_tasks(id),
     FOREIGN KEY (assignee_id) REFERENCES to_do_list_users(id)
 );
+
+UPDATE to_do_list_users SET name = "teste"
+WHERE id = "id"
