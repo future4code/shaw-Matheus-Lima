@@ -18,5 +18,16 @@ export class RecipeDataBase extends BaseDatabase {
             .where({ id })
     }
 
+    public getRecipesById = async (id: string): Promise<recipe> => {
+        const [result] = await this.getConnection()
+            ('recipes')
+            .where({ id })
+        return result
+    }
 
+    public deleteRecipe = async (id: string) => {
+        await this.getConnection()
+            ('recipes')
+            .delete(id)
+    }
 }

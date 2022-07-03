@@ -14,10 +14,7 @@ export default async function getOtherProfile(req: Request, res: Response) {
         const authenticator = new Authenticator()
         const data = authenticator.getData(token)
 
-        // if(data.role !== "Normal"){
-        //     throw new Error("Usuário Não autorizado!")
-        // }
-
+    
         const userDB = new UserDatabase()
         const user = await userDB.getById(req.params.id)
 
