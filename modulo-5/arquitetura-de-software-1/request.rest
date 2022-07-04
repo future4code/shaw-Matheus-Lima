@@ -1,0 +1,41 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name":"gabriel",
+    "nickname":"gabrielzin",
+    "email":"gabriel@gmail.com",
+    "password":"123123",
+    "role":"NORMAL"
+}
+
+
+###
+
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+
+{
+"email":"gabriel@gmail.com",
+"password":"123123"
+}
+
+
+###
+
+POST http://localhost:3003/task
+Content-Type: application/json
+
+{
+
+   "title": "Fazer tarefa da tarde ",
+   "description": "completar o estudos da manhã",
+   "task_id":"0977e60b-9035-4d9e-b933-84a36a3c90eb"
+
+}
+
+###
+
+GET http://localhost:3003/task/e47849c4-2c2c-4113-91c7-843dfef90da2
