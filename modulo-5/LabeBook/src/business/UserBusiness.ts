@@ -4,6 +4,7 @@ import { Authenticator } from "../services/authenticator";
 import { HarshManager } from "../services/hashManager";
 import { SignUpInputDTO } from "../types/signupDTO";
 import IdGenerator from "../services/idGenerator";
+import { compare } from "bcryptjs";
 
 
 export default class UserBusiness{
@@ -13,9 +14,8 @@ export default class UserBusiness{
        private authenticator:Authenticator,
        private harshManager:HarshManager,
         ){
-
     }
-
+    
     signup = async(input:SignUpInputDTO)=>{
         const {name, email, password} = input
         if(!name || !email || !password){
@@ -26,7 +26,6 @@ export default class UserBusiness{
         if(registeredUser){
             throw new Error("Email já cadastrado")
         }
-        
         // conferir se o usuário existe
         // criar uma id para o usuário 
         const id = this.idGenerator.generateId()
@@ -43,8 +42,24 @@ export default class UserBusiness{
         // criar o token
         const token =this.authenticator.generateToken({id})
         // retornar o token
-        return token
-
-        
+        return token  
     }
+
+        login = async(log:SignUpInputDTO)=>{
+            const {email,password} = log
+
+           const passwordIsCorrect:boolean = await compare(password,email)
+
+           if (!email || !password) {
+            throw new Error("'email' e 'senha' são obrigatórios")
+        }
+        if (passwordIsCorrect) {
+            throw new Error("Usuário não encontrado ou senha incorreta")
+        }
+        const user = this.userData.findbyEmail(email)
+    
+        const token = this.authenticator.generateToken({id:(await user).id})
+            return token
+
+        }
 }

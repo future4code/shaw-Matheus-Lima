@@ -9,7 +9,6 @@ password VARCHAR(255) NOT NULL,
 
 */
 
-
 export default class User {
     constructor(
         private id: string,
@@ -18,3 +17,10 @@ export default class User {
         private password: string
     ) { }
 }
+
+
+
+
+
+
+

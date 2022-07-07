@@ -19,7 +19,7 @@ export default class UserData extends BaseDataBase {
         }
 
     }
-
+    
     findbyEmail = async (email: string) => {
         try {
             const queryResult: FindByEmailResponse = await

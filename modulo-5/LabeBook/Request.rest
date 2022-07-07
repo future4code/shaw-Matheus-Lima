@@ -2,7 +2,45 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "name":"Jorge",
+    "name":"joao",
+    "email":"joao@gmail.com",
+    "password":"joao123"
+}
+
+
+### 
+
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
     "email":"jorge@gmail.com",
     "password":"jorge123"
+
+}
+
+
+
+###
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZmZkYjM4LWZkMDUtNDRiZi05MDY0LTFmMzIyMzUxZDk3NyIsImlhdCI6MTY1NzIwODMwNX0.v2fUcEIlrCRFb2XnF7TjtT4_Ea-62cL-j9H7CwcsTVM
+
+
+
+POST http://localhost:3003/create
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+
+            "photo":"barao",
+            "descrition":"asdasd",
+            "type":"normal",
+            "author_id":"60ffdb38-fd05-44bf-9064-1f322351d977"
+
+
+
+
+
 }
