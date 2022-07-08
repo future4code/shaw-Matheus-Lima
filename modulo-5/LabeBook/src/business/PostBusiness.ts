@@ -4,6 +4,7 @@ import { Authenticator } from "../services/authenticator";
 import { HarshManager } from "../services/hashManager";
 import IdGenerator from "../services/idGenerator";
 import { CreateDTO } from "../types/createDTO";
+import { getPostDTO } from "../types/getByIdDTO";
 
 export default class PostBusiness {
     constructor(
@@ -16,44 +17,37 @@ export default class PostBusiness {
     create = async (input: CreateDTO) => {
         const { photo, descrition, type, author_id } = input
 
-        if(!photo || !descrition ||  !author_id){
+        if (!photo || !descrition || !author_id) {
             throw new Error("Campos invalidos preencha novamente!")
         }
 
         const id = this.idGenerator.generateId()
+
+        const newPost = new Post(
+            id,
+            photo,
+            descrition,
+            type,
+            author_id
+        )
+
+        await this.postData.insert(newPost)
+
+    }
+
+    getPost = async (id: string) => {
+        const post = await this.postData.getPostById(id)
         
        
+       
+        // if (id === "") {
+        //     throw new Error('Sem id')
+        //  }
+        return post
 
-
-       const newPost = new Post(
-        id,
-        photo,
-        descrition,
-        type,
-        author_id
-       )
-
-       await this.postData.insert(newPost)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      
+    }
 
 }
 
-}
+

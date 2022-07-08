@@ -7,6 +7,7 @@ import IdGenerator from "../services/idGenerator";
 import { compare } from "bcryptjs";
 
 
+
 export default class UserBusiness{
     constructor(
        private userData:UserData,
@@ -62,4 +63,7 @@ export default class UserBusiness{
             return token
 
         }
-}
+
+
+           
+        }

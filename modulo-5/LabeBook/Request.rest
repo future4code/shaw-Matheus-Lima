@@ -2,9 +2,9 @@ POST http://localhost:3003/user/signup
 Content-Type: application/json
 
 {
-    "name":"joao",
-    "email":"joao@gmail.com",
-    "password":"joao123"
+    "name":"Cleber",
+    "email":"Cleber@gmail.com",
+    "password":"cleber123"
 }
 
 
@@ -24,7 +24,7 @@ Content-Type: application/json
 
 ###
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZmZkYjM4LWZkMDUtNDRiZi05MDY0LTFmMzIyMzUxZDk3NyIsImlhdCI6MTY1NzIwODMwNX0.v2fUcEIlrCRFb2XnF7TjtT4_Ea-62cL-j9H7CwcsTVM
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZmZkYjM4LWZkMDUtNDRiZi05MDY0LTFmMzIyMzUxZDk3NyIsImlhdCI6MTY1NzMwODUxM30.s-Nv08d3bcrbZsQNNFcwUJXDvhflILw7VT-GBmKdgqA
 
 
 
@@ -34,13 +34,17 @@ Authorization: {{token}}
 
 {
 
-            "photo":"barao",
-            "descrition":"asdasd",
+            "photo":"Jorge",
+            "descrition":"bonito na praia",
             "type":"normal",
             "author_id":"60ffdb38-fd05-44bf-9064-1f322351d977"
 
-
-
-
-
 }
+
+
+###
+
+GET http://localhost:3003/getpost/34e45cf2-a28c-4d2e-b854-9d5df1738911
+Content-Type: application/json
+Authorization: {{token}}
+

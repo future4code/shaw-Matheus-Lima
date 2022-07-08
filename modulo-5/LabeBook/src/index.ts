@@ -37,4 +37,4 @@ const postControl = new PostController(
 app.post("/user/signup", userController.signup)
 app.post("/user/login",userController.login)
 app.post("/create",postControl.create)
-app.get("/getby/:id",postControl.getById)
+app.get("/getpost/:id",postControl.getPostById)
