@@ -4,7 +4,6 @@ import { BaseDataBase } from "./BaseDataBase";
 
 
 export default class PostData extends BaseDataBase{
-
 protected TABLE_NAME = "labook_posts"
 insert = async (post:Post)=>{
     try {

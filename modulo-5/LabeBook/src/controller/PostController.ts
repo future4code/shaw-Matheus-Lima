@@ -37,19 +37,17 @@ export default class PostController{
         const id:string = req.params.id as string
         const token = req.headers.authorization as string
         try {
-           
-
-
          const result = await this.postBusiness.getPost(id)
          res.status(200).send({result})
-         console.log(result)
-
-            
+         console.log(result)  
         } catch (error:any) {
-            throw new Error(error.sqlMessage || error.message)
-            
+            throw new Error(error.sqlMessage || error.message)     
         }
 }
+
+
+
+
    
 
 

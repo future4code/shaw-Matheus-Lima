@@ -4,7 +4,7 @@ import { Authenticator } from "../services/authenticator";
 import { HarshManager } from "../services/hashManager";
 import IdGenerator from "../services/idGenerator";
 import { CreateDTO } from "../types/createDTO";
-import { getPostDTO } from "../types/getByIdDTO";
+
 
 export default class PostBusiness {
     constructor(
@@ -37,17 +37,12 @@ export default class PostBusiness {
 
     getPost = async (id: string) => {
         const post = await this.postData.getPostById(id)
-        
-       
-       
-        // if (id === "") {
-        //     throw new Error('Sem id')
-        //  }
         return post
-
-      
     }
 
+
+
+   
 }
 
 

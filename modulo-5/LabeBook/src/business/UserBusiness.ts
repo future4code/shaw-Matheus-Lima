@@ -8,23 +8,23 @@ import { compare } from "bcryptjs";
 
 
 
-export default class UserBusiness{
+export default class UserBusiness {
     constructor(
-       private userData:UserData,
-       private idGenerator:IdGenerator,
-       private authenticator:Authenticator,
-       private harshManager:HarshManager,
-        ){
+        private userData: UserData,
+        private idGenerator: IdGenerator,
+        private authenticator: Authenticator,
+        private harshManager: HarshManager,
+    ) {
     }
-    
-    signup = async(input:SignUpInputDTO)=>{
-        const {name, email, password} = input
-        if(!name || !email || !password){
+
+    signup = async (input: SignUpInputDTO) => {
+        const { name, email, password } = input
+        if (!name || !email || !password) {
             throw new Error("Campos Invalidos")
         }
         const registeredUser = await this.userData.findbyEmail(email)
         //validação
-        if(registeredUser){
+        if (registeredUser) {
             throw new Error("Email já cadastrado")
         }
         // conferir se o usuário existe
@@ -41,29 +41,60 @@ export default class UserBusiness{
         )
         await this.userData.insert(user)
         // criar o token
-        const token =this.authenticator.generateToken({id})
+        const token = this.authenticator.generateToken({ id })
         // retornar o token
-        return token  
+        return token
     }
 
-        login = async(log:SignUpInputDTO)=>{
-            const {email,password} = log
+    login = async (log: SignUpInputDTO) => {
+        const { email, password } = log
 
-           const passwordIsCorrect:boolean = await compare(password,email)
+        const passwordIsCorrect: boolean = await compare(password, email)
 
-           if (!email || !password) {
+        if (!email || !password) {
             throw new Error("'email' e 'senha' são obrigatórios")
         }
         if (passwordIsCorrect) {
             throw new Error("Usuário não encontrado ou senha incorreta")
         }
         const user = this.userData.findbyEmail(email)
-    
-        const token = this.authenticator.generateToken({id:(await user).id})
-            return token
 
+        const token = this.authenticator.generateToken({ id: (await user).id })
+        return token
+
+    }
+
+
+    followFriend = async (token:string, friendshipId:string) => {
+        // validações
+        if (!token) {
+            throw new Error("Acesso de token não autorizado")
         }
 
-
-           
+        if (!friendshipId) {
+            throw new Error("id inválida")
         }
+        // pegar token
+        const tokenToData = this.authenticator.getData(token)
+        const friendId:string = tokenToData.id
+
+        await this.userData.follow(friendshipId, friendId)
+
+    }
+    remove = async(token:string, removeFriend:string)=>{
+        if(!token){
+            throw new Error("Acesso de token não autorizado")
+        }
+        if(!removeFriend){
+            throw new Error("id inválida")
+        }
+        const tokenToData = this.authenticator.getData(token)
+        const removeFriendship:string = tokenToData.id
+
+        await this.userData.delete(removeFriendship,removeFriend )
+    }
+
+
+
+
+}

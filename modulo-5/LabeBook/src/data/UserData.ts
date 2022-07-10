@@ -10,8 +10,8 @@ export default class UserData extends BaseDataBase {
         try {
             await
                 this.
-                connection(this.TABLE_NAME)
-                .insert(user)
+                    connection(this.TABLE_NAME)
+                    .insert(user)
 
         } catch (error: any) {
             throw new Error(error.sqlMessage || error.message)
@@ -19,12 +19,12 @@ export default class UserData extends BaseDataBase {
         }
 
     }
-    
+
     findbyEmail = async (email: string) => {
         try {
             const queryResult: FindByEmailResponse = await
                 this
-                .connection(this.TABLE_NAME)
+                    .connection(this.TABLE_NAME)
                     .select()
                     .where({ email })
             return queryResult[0]
@@ -35,6 +35,41 @@ export default class UserData extends BaseDataBase {
 
         }
     }
+
+    follow = async (friendId: string, friendshipId: string) => {
+        try {
+            const queryResult =
+                await this.
+                    connection(this.TABLE_NAME)
+                    .insert({
+                        user_id: friendId,
+                        friend: friendshipId
+                    })
+                    .into("labook_friendship")
+            return queryResult
+
+        } catch (error: any) {
+            throw new Error(error.sqlMessage || error.message)
+        }
+    }
+
+    delete = async(user_id:string,friend:string)=>{
+        try {
+            const queryResult = await this.connection("labook_friendship")
+            .delete()
+            .where("user_id",user_id).andWhere("friend",friend)
+            .from("labook_friendship")
+            return queryResult
+            
+        } catch (error:any) {
+            throw new Error(error.sqlMessage || error.message)
+            
+        }
+    }
+
+
+
+
 
 
 }

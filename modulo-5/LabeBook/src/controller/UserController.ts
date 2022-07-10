@@ -42,6 +42,30 @@ constructor(private userBusiness:UserBusiness){
         }
     }
 
+    follow = async(req:Request,res:Response)=>{
+        const token: string = req.headers.authorization as string
+       const  {haveAFriendship} = req.body
+        try {
+            const addFriend = await this.userBusiness.followFriend(token,haveAFriendship)
+            res.status(201).send({message: "Amigo Adicionado",addFriend})
+            
+        } catch (error:any) {
+            throw new Error(error.message)  
+        }  
+    }
+
+    delete = async(req:Request, res:Response)=>{
+        const token: string = req.headers.authorization as string
+        const {removeFriend } = req.body
+        try {
+            const removeaFriend = await this.userBusiness.remove(token,removeFriend)
+            res.status(200).send({message:"Amizade desfeita", removeaFriend})
+        } catch (error:any) {
+            throw new Error(error.message)
+        }
+    }
+
+
 
 
  

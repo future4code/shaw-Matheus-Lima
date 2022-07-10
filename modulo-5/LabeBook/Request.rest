@@ -48,3 +48,25 @@ GET http://localhost:3003/getpost/34e45cf2-a28c-4d2e-b854-9d5df1738911
 Content-Type: application/json
 Authorization: {{token}}
 
+
+###
+
+POST http://localhost:3003/follow
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+
+   "haveAFriendship":"a3c97860-9bf5-4744-9d6d-63aa698b8bcd"
+}
+
+###
+
+
+DELETE http://localhost:3003/delete/friend
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "removeFriend":"a3c97860-9bf5-4744-9d6d-63aa698b8bcd"
+}
