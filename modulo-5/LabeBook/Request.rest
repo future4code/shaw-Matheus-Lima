@@ -1,0 +1,72 @@
+POST http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name":"Cleber",
+    "email":"Cleber@gmail.com",
+    "password":"cleber123"
+}
+
+
+### 
+
+
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email":"jorge@gmail.com",
+    "password":"jorge123"
+
+}
+
+
+
+###
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwZmZkYjM4LWZkMDUtNDRiZi05MDY0LTFmMzIyMzUxZDk3NyIsImlhdCI6MTY1NzMwODUxM30.s-Nv08d3bcrbZsQNNFcwUJXDvhflILw7VT-GBmKdgqA
+
+
+
+POST http://localhost:3003/create
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+
+            "photo":"Jorge",
+            "descrition":"bonito na praia",
+            "type":"normal",
+            "author_id":"60ffdb38-fd05-44bf-9064-1f322351d977"
+
+}
+
+
+###
+
+GET http://localhost:3003/getpost/34e45cf2-a28c-4d2e-b854-9d5df1738911
+Content-Type: application/json
+Authorization: {{token}}
+
+
+###
+
+POST http://localhost:3003/follow
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+
+   "haveAFriendship":"a3c97860-9bf5-4744-9d6d-63aa698b8bcd"
+}
+
+###
+
+
+DELETE http://localhost:3003/delete/friend
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+    "removeFriend":"a3c97860-9bf5-4744-9d6d-63aa698b8bcd"
+}
