@@ -13,8 +13,8 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
     <Route index element={<Login/>}/>
-    <Route path="/SignUp" element={<SignUp/>}/>
-    <Route path="/SignUp/Adress" element={<SignUpAdress/>}/>
+    <Route path="/signUp" element={<SignUp/>}/>
+    <Route path="/signUp/adress" element={<SignUpAdress/>}/>
     <Route path="/feed" element={<Feed/>}/>
     <Route path="/feed/:restauranteId" element={<Restaurante/>}/>
     <Route path="/profile" element={<Profile/>}/>

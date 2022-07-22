@@ -11,5 +11,13 @@ export const goToSignUp = (navigate) =>{
 }
 
 export const goToSignUpAdress = (navigate)=>{
-    navigate("/signUpAdress")
+    navigate("/signup/adress")
+}
+
+export const goToRestaurant = (navigate,id)=>{
+  navigate(`/feed/${id}`)
+}
+
+export const goToBack = (navigate)=>{
+  navigate(-1)
 }
