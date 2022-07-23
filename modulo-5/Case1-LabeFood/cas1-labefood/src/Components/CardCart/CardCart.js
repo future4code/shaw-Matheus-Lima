@@ -1,31 +1,28 @@
-import { Button } from '@chakra-ui/button';
-import { Box } from '@chakra-ui/layout';
+import React, { useState } from "react";
+import { BoxInform, BoxInformButtonPrice, BoxNameQuantity, ContainerCardProducts, ImageProducts, InformButton, InformDescription, InformPrice, NameProduct } from "./styled";
 
-import React from 'react';
-import {
-  StyledImg,
-  StyledName,
-  ButtonRed,
-  Container,
-  StyledDescription,
-  StyledPrice,
-  TitleContainer
-} from './styles';
+const CardCart = (props) => {
+    return(
+        <ContainerCardProducts>
+        <ImageProducts src={props.photoUrl}/>
+        <BoxInform>
+            <BoxNameQuantity>
+                <NameProduct>{props.name}</NameProduct>
+            </BoxNameQuantity>
+            <InformDescription>
+                {props.description}
+            </InformDescription>
+            <BoxInformButtonPrice>
+                <InformPrice>
+                   {props.price}0
+                </InformPrice>
+                <InformButton onClick={""}>
+                remover
+            </InformButton>
+            </BoxInformButtonPrice>
+        </BoxInform>
+    </ContainerCardProducts>
+    )
+}
 
-const CartCard = (props) => {
-  return (
-    <Box>
-        <Container>
-          <StyledImg src={props.photoUrl} />
-          <TitleContainer>
-            <StyledName>{props.name}</StyledName>
-          </TitleContainer>
-          <StyledDescription>{props.description}</StyledDescription>
-          <StyledPrice> R${props.price},00 <b>x{props.amount}</b></StyledPrice>
-          <Button w='25%' mt='90px' ml='-100px' bg='white' onClick={props.removeItemFromCart}>Remover</Button>
-        </Container>
-    </Box>
-  );
-};
-
-export default CartCard;
+export default CardCart

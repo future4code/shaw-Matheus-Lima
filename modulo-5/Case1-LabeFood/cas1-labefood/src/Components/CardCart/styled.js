@@ -1,83 +1,89 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-export const Container = styled.div`
-  margin: 16px;
-  border: 1px solid #b8b8b8;
-  width:328px;
-  border-radius: 8px;
-  height: 121px;
-  color: #5cb646;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-`;
+export const ContainerCardProducts = styled.div`
+width: 100%;
+margin: 0.5rem 0;
+display: flex;
+border: solid 1px gray;
+border-radius: 9px;
+`
+export const ImageProducts = styled.img`
+width: 6rem;
+height: 7rem;
+border-radius: 9px 0 0 9px  ;
+`
+export const QuantityProduct = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+width: 2.063rem;
+height: 2.063rem;
+border: solid 1px #E8222E;
+`
 
-export const TitleContainer = styled.div`
-  margin-top: 10px;
-  margin-left: 15px;
-`;
+export const  BoxNameQuantity = styled.div`
+`
 
-export const ButtonContainer = styled.div``;
-
-export const StyledImg = styled.img`
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
-  width: 30%;
-  height: 120px;
-  object-fit: cover;
-`;
-
-export const StyledName = styled.p`
-  color: #5cb646;
-  letter-spacing: -0.39px;
-`;
-
-export const StyledDescription = styled.p`
-  width: 200px;
-  height: 30px;
-  margin: 8px 16px 4px;
-  font-size: 12px;
+export const NameProduct = styled.h3`
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
   line-height: normal;
-  letter-spacing: -0.29px;
-  color: #b8b8b8;
-`;
+  letter-spacing: -0.39px;  
+  color:#E8222E;
+  margin-bottom: 0.25rem;
+  margin-left: 4.8px;
+` 
 
-export const StyledPrice = styled.p`
-  width: 118px;
-  height: 19px;
-  margin: 4px 8px 15px 16px;
-  font-size: 16px;
-  font-weight: bolder;
-  color: black;
-  letter-spacing: -0.39px;
-`;
 
-export const StyledTitle = styled.p`
-  width: 328px;
-  height: 18px;
-  margin: 16px 16px 8px;
-  font-size: 16px;
-  font-weight: bold;
-  letter-spacing: -0.39px;
-`;
+export const BoxInform = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 1rem 0 0 1rem;
+  flex-grow: 1;
+`
 
-export const Path = styled.div`
-  width: 337px;
-  height: 1px;
-  margin-left: 10px;
-  margin-right: 15px;
-  border: 1px solid black;
-  margin-bottom: 10px;
-`;
+export const InformDescription = styled.p`
+  font-size: 1rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: grey;
+  padding: 0.25rem;
+    flex-grow: 1;
+`
 
-export const ButtonRed = styled.button`
-  border: 1px solid black; 
-  border-color: red;
-  color: red;
-  border-top-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  font-size: 12px;
-  padding: 5px 20px;
-  margin: -62px -3px 0 233px;
-  position: absolute;
+export const BoxInformButtonPrice = styled.div`
+display: flex;
+justify-content: space-between;
+`
+
+export const InformPrice = styled.p` 
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;  
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  padding: 0.25rem;
+  flex-grow: 1;
+`
+
+export const InformButton = styled.button` 
+width: 5.625rem;
+height: 1.938rem;
+border-radius: 8px 0 8px 0;
+background-color: #fff;
+outline: 0;
+border: solid 1px #E8222E;
+font-weight: 600;
+color: #E8222E;
 `

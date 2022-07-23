@@ -1,85 +1,142 @@
 import styled from "styled-components";
 
-
-export const Main = styled.div`
+export const ContainerCart = styled.div`
 display: flex;
-flex-direction: column;
-height: 100vh;
+flex-direction:column ;
+height: 100%;
 `
 
-
-export const MainCart = styled.div`
+export const CartConfig = styled.div` 
 display: flex;
-height: 5%;
-justify-content: center;
-align-items: center;
-font-size: 2rem;
-
-`
-
-export const CartConfig = styled.div`
-display: flex;
-flex-direction: column;
+flex-direction:column;
+justify-content: space-between;
 align-items: center;
 width: 100%;
-height: 95%;
-justify-content: space-between;
+`
 
+export const MainCart = styled.div`
+width: 90%;
 `
 
 export const InfoProfile = styled.div`
-margin-top: 5px;
-height: 10%;
+height: 12%;
+width: 100%;
 display: flex;
+align-items: flex-start;
+justify-content: flex-start;
 flex-direction: column;
-align-items: center;
-justify-content: center;
 font-size: 1.2rem;
-background-color: gray;
+padding: 1rem;
+background-color: #eeee;
+p{
+  font-size: 1rem;
+  font-weight: 500;
+}
 `
 
-export const CartInfo = styled.div`
-margin-top: 10px;
-display: flex;
-flex-direction: column;
+export const AddressTitle = styled.h4`
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: -0.39px;  
+  color: #b8b8b8;
+  margin-bottom: 5px;
+`
+
+export const InfoRestaurant = styled.div`
+height: auto;
 width: 100%;
+display: flex;
+align-items: flex-start;
+justify-content: flex-start;
+flex-direction: column;
+font-size: 1.2rem;
+p{
+  color: #b8b8b8;
+  margin-bottom: 0.5rem;
+}
+`
+
+export const NameRestaurant = styled.h4`
+color:#E8222E;
+font-weight: 500;
+margin-bottom: 0.5rem;
 `
 
 export const EmptyCart = styled.p`
-font-size: 3rem;
+font-size: 1.5rem;
 text-align:center ;
-
+font-weight: 500;
 `
 
-export const Payment = styled.div`
-display: flex;
-flex-direction: column;
-width: 100%;
-height: 100%;
-p,label{
-  font-size: 1.2rem;
-}
-`
 export const Freight = styled.p`
 display: flex;
 justify-content: flex-end;
 margin: 5px;
-
+width: 85vw;
+font-weight: 600;
 `
 
-export const Form = styled.form`
+export const TotalContainer = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-top: 1rem;
+b{
+  font-weight: 700;
+}
+`
+
+export const Total = styled.p`
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-top: 1rem;
+color:red;
+font-weight: 600;
+`
+
+export const PaymentTitle = styled.div`
+display: flex;
+flex-direction: row;
+width: 100%;
+justify-content: flex-start;
+p{
+  font-weight: 600;
+}
+`
+
+export const FormContainer = styled.div`
 display: flex;
 flex-direction: column;
-div{
-  margin: 5px;
-}
-label{
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-input{
-  height: 20px;
-  width: 20%;
-}
+height: 10%;
+`
 
+export const Form = styled.div`
+display: flex;
+flex-direction: row;
+justify-content: flex-start;
+width: 100%;
+label{
+  align-items: flex-start;
+  margin-top: 0.6rem;
+}
+`
+
+export const ButtonCart = styled.div`
+  width: 90%;
+  height: 8vh;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  background-color: #E8222E;
+  position: fixed;
+  bottom: 10vh;
+  left: 5%;
+  font-weight: 500;
+  font-size: 20px;
 `

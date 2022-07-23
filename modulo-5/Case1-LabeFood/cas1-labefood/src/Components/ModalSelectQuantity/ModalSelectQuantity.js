@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { BoxModal, ButtonAddToCard, SelectQuantity, TitleModal } from './styled';
 
 const style = {
-  position: 'absolute' ,
+  position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -19,16 +19,16 @@ const style = {
   p: 4,
 };
 
-const  ModalSelectQuantity =({open,setOpen})=> {
-  
+const ModalSelectQuantity = ({ open, setOpen }) => {
+
 
 
   return (
     <>
-    
+
       <Modal
         open={open}
-        onClose={()=> setOpen(false)}
+        onClose={() => setOpen(false)}
         closeAfterTransition
         BackdropProps={{
           timeout: 500,
@@ -37,22 +37,22 @@ const  ModalSelectQuantity =({open,setOpen})=> {
         <Fade in={open}>
           <BoxModal>
             <TitleModal>
-                Selecione a Quantidade Desejada
+              Selecione a Quantidade Desejada
             </TitleModal>
             <SelectQuantity>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
             </SelectQuantity>
-                <ButtonAddToCard>
-                    Adicionar Ao Carrinho
-                </ButtonAddToCard>
-            
-            
+            <ButtonAddToCard>
+              Adicionar Ao Carrinho
+            </ButtonAddToCard>
+
+
           </BoxModal>
         </Fade>
       </Modal>
