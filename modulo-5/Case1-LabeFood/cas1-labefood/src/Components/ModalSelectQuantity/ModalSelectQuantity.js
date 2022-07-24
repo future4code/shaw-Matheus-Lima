@@ -1,4 +1,4 @@
-import * as React from 'react';
+
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { BoxModal, ButtonAddToCard, SelectQuantity, TitleModal } from './styled';
+import { useState } from 'react';
 
 const style = {
   position: 'absolute',
@@ -19,7 +20,8 @@ const style = {
   p: 4,
 };
 
-const ModalSelectQuantity = ({ open, setOpen }) => {
+const ModalSelectQuantity = ({ open, setOpen,choiceQuantity }) => {
+  const [quantity, setQuantity] = useState(1)
 
 
 
@@ -39,7 +41,7 @@ const ModalSelectQuantity = ({ open, setOpen }) => {
             <TitleModal>
               Selecione a Quantidade Desejada
             </TitleModal>
-            <SelectQuantity>
+            <SelectQuantity onChange={(e)=> setQuantity(e.target.value)}>
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -48,7 +50,7 @@ const ModalSelectQuantity = ({ open, setOpen }) => {
               <option>6</option>
               <option>7</option>
             </SelectQuantity>
-            <ButtonAddToCard>
+            <ButtonAddToCard onClick={() => choiceQuantity(Number(quantity))}>
               Adicionar Ao Carrinho
             </ButtonAddToCard>
 

@@ -10,12 +10,17 @@ import {
 import CardRestaurantsDetail from "../../Components/CardRestaurantDetail/CardRestaurantsDetail";
 import CardProduct from "../../Components/CardProduct/CardProduct";
 import { CardHeader } from "@mui/material";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 
 const Restaurante = () => {
   const { restauranteId } = useParams();
   const [restaurant, setRestaurant] = useState({});
   const [categories, setCategories] = useState([]);
-  console.log(restauranteId);
+
+  const { requests } = useGlobal()
+  const { addToCart } = requests
+
+
   const getRestaurant = () => {
     axios
       .get(`${BASE_URL}/restaurants/${restauranteId}`, {
@@ -50,6 +55,7 @@ const Restaurante = () => {
     <>
       <ContainerRestaurant>
         <CardHeader title={"Restaurante"}  />
+      
         <CardRestaurant>
           <CardRestaurantsDetail restaurant={restaurant} />
           {restaurant.products &&
@@ -62,7 +68,12 @@ const Restaurante = () => {
                       return product.category === category;
                     })
                     .map((product) => {
-                      return <CardProduct product={product} key={product.id} />;
+                      return <CardProduct
+                        product={product}
+                        key={product.id}
+                        restaurant={restaurant}
+
+                      />;
                     })}
                 </div>
               );

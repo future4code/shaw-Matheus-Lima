@@ -12,6 +12,8 @@ import {
 } from "./styled";
 import CardRestaurants from "../../Components/CardRestaurants/CardRestaurants";
 import CardHeader from "../../Components/Header/Header";
+import Footer from "../../Components/Footer/Footer";
+import Order from "../../Order/Order";
 
 const Feed = () => {
   useProtectedPage();
@@ -29,7 +31,7 @@ const Feed = () => {
         },
       })
       .then((res) => {
-        console.log(res.data);
+      
         setRestaurants(res.data.restaurants);
         filterCategory(res.data.restaurants);
       })
@@ -102,6 +104,7 @@ const Feed = () => {
 
   return (
     <ContainerFeed>
+
       <CardHeader title={"IFuture"} />
       <CardRestaurant>
         <BoxInputSearch>
@@ -116,7 +119,7 @@ const Feed = () => {
             Todos
           </MenuItem>
           {categoryRestaurant.map((category) => {
-            console.log(category.select)
+            
             return (
               <MenuItem
                 select={category.select}
@@ -130,6 +133,8 @@ const Feed = () => {
 
         {filterRestaurant}
       </CardRestaurant>
+      <Footer/>
+      
     </ContainerFeed>
   );
 };

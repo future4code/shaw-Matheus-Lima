@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+<h1 id="top"> 💻 Ifuture - Case LabeFood</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+   <img src="https://raw.githubusercontent.com/future4code/projeto-final-iFuture/a7a45ed620f138a82a456d2682b2696b9b8f952a/src/assets/logo.svg" width="100%" height="250" />
+</div>
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+[Deploy da aplicação]()
 
-### `npm start`
+[Documentação da API](https://documenter.getpostman.com/view/7549981/SWTEdGtT?version=latest)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## ✍️ Layout:
+  Visualize os layouts desenvolvidos pela designer Camila Mizutanios [clicando aqui.](https://scene.zeplin.io/project/5dd5ab8e5fb2a0060f81698f)
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ⚙️ Funcionalidades:
+  - Login: utilizando um email e uma senha cadastrada o usuário consegue ter acesso as páginas da aplicação com proteções de autenticações;
+  - Cadastro: efetua o cadastro de um novo usuário para adquirir uma autenticação e encaminha para registrar o endereço de entrega do delivery;
+  - Cadastro de Endereço: armazena as informações de endereço do usuário e recebe outra autenticação, em seguida o caminha para a página inicial;
+  - Home: filtra por categoria ou nome de restaurante, além do usuário poder acessar cada restaurante clicando no respectivo card;
+  - Restaurante: visualiza informações do restaurante e consegue adicionar ou remover produtos no carrinho clicando no respectivo botão;
+  - Carrinho: mostra os produtos adicionados, podendo remover ou continuar o processo escolhendo uma forma de pagamento e confirmando (só poderá fazer outro pedido após o tempo de entrega do respectivo restaurante);
+  <!-- - Perfil: acessa as páginas de dados do usuário podendo editar as informações de endereço ou login, além de ver seu histórico de pedidos finalizados; -->
+  - Footer: permite navegar entre as três principais páginas clicando nos seus respectivos ícones.
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💻 Principais tecnologias/ferramentas utilizadas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. React
+2. Redux
+3. Redux-Thunk: Integração do redux com requisições assíncronas.
+4. Autenticação
+5. Estilização Avançada com CSS
+6. Uso de bibliotecas de UI (MaterialUI)
+7. Aplicações com múltiplas rotas utilizando React Router
+8. Formulários com Validação
+9. Responsividade e adaptação de aplicação web para front.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br>
 
-### `npm run eject`
+## :books: Bibliotecas utilizadas:
+  - [material-ui](https://mui.com/pt/)
+  - [react-router-dom](https://v5.reactrouter.com/)
+  - [axios](https://github.com/axios/axios)
+  - [styled-components](https://styled-components.com/)
+   Link Surge: 
+  - Acesse Ufuture [clicando aqui.]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br>  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
