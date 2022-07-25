@@ -14,12 +14,16 @@ import CardRestaurants from "../../Components/CardRestaurants/CardRestaurants";
 import CardHeader from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 import Order from "../../Order/Order";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
 
 const Feed = () => {
   useProtectedPage();
   const [restaurants, setRestaurants] = useState([]);
   const [categoryRestaurant, setCategoryRestaurant] = useState([]);
   const [valueCategory, setValueCategory] = useState("");
+  const { states, setters } = useGlobal();
+  const { cart, restaurant, order, activeOrder } = states;
+  const { setOrder, setActiveOrder } = setters;
 
   const [inputText, setInputText] = useState("");
 
@@ -39,6 +43,27 @@ const Feed = () => {
         console.log(err.data);
       });
   };
+
+  const getActiveOrder = async () => {
+    await axios
+      .get(`${BASE_URL}/active-order`, {
+        headers: {
+          auth: localStorage.getItem("token"),
+        },
+      })
+      .then((res) => {
+        setOrder(res.data.order);
+        const expiresAt = res.data.order.expiresAt
+        setTimeout(()=> {
+        getActiveOrder()
+      }, expiresAt - new Date().getTime())
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  };
+
+
   const filterCategory = (restaurants) => {
     const arrayAux = [];
     restaurants &&
@@ -57,6 +82,7 @@ const Feed = () => {
 
   useEffect(() => {
     getRestaurants();
+    getActiveOrder();
   }, []);
 
   const filterRestaurant = restaurants

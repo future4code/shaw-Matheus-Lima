@@ -11,7 +11,8 @@ const CardRestaurantsDetail = ({restaurant}) => {
     <NameRestaurante>{restaurant.name}</NameRestaurante>
     <Inform>{restaurant.category}</Inform>
     <BoxInformTimePrice>
-      <Inform>{restaurant.deliveryTime}</Inform>
+      <Inform>{restaurant.deliveryTime}- {restaurant.deliveryTime + 20}min</Inform>
+      
       <Inform>{restaurant.shipping}</Inform>
     </BoxInformTimePrice>
     <Inform>{restaurant.address}</Inform>

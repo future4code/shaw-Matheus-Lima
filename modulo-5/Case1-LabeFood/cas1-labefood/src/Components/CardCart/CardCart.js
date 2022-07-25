@@ -1,22 +1,38 @@
-import React, { useState } from "react";
-import { BoxInform, BoxInformButtonPrice, BoxNameQuantity, ContainerCardProducts, ImageProducts, InformButton, InformDescription, InformPrice, NameProduct } from "./styled";
+import React from "react";
+import { useGlobal } from "../../Context/Global/GlobalStateContext";
+import { 
+    BoxInform, 
+    BoxInformButtonPrice, 
+    BoxNameQuantity, 
+    ContainerCardProducts, 
+    ImageProducts, 
+    InformButton, 
+    InformDescription, 
+    InformPrice, 
+    NameProduct, 
+    QuantityProduct
+} from "./styled";
 
-const CardCart = (props) => {
+const CardCart = ({data}) => {
+  const { states, requests, setters } = useGlobal();
+  const {removeItemToCart } = requests;
+
     return(
         <ContainerCardProducts>
-        <ImageProducts src={props.photoUrl}/>
+        <ImageProducts src={data.photoUrl}/>
         <BoxInform>
-            <BoxNameQuantity>
-                <NameProduct>{props.name}</NameProduct>
-            </BoxNameQuantity>
+        <BoxNameQuantity>
+          <NameProduct>{data.name}</NameProduct>
+          { <QuantityProduct>{data.quantity}</QuantityProduct>}
+        </BoxNameQuantity>
             <InformDescription>
-                {props.description}
+                {data.description}
             </InformDescription>
             <BoxInformButtonPrice>
                 <InformPrice>
-                   {props.price}0
+                   {data.price}0
                 </InformPrice>
-                <InformButton onClick={""}>
+                <InformButton onClick={() => removeItemToCart(data.id)}>
                 remover
             </InformButton>
             </BoxInformButtonPrice>

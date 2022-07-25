@@ -10,7 +10,7 @@ const CardRestaurants = ({restaurant}) => {
     <ImagemRestaurante src={restaurant.logoUrl}/>
     <NameRestaurante>{restaurant.name}</NameRestaurante>
     <BoxInformTimePrice>
-      <InformTimePrice>{restaurant.deliveryTime}</InformTimePrice>
+    <InformTimePrice>{restaurant.deliveryTime} - {restaurant.deliveryTime + 20}min</InformTimePrice>
       <InformTimePrice>{restaurant.shipping}</InformTimePrice>
     </BoxInformTimePrice>
       </ContainerCardRestaurants> 

@@ -52,7 +52,8 @@ display: flex;
 align-items: flex-start;
 justify-content: flex-start;
 flex-direction: column;
-font-size: 1.2rem;
+font-size: 1rem;
+width: 90%;
 p{
   color: #b8b8b8;
   margin-bottom: 0.5rem;
@@ -69,6 +70,8 @@ export const EmptyCart = styled.p`
 font-size: 1.5rem;
 text-align:center ;
 font-weight: 500;
+margin-bottom: 4rem;
+margin-top: 1rem;
 `
 
 export const Freight = styled.p`
@@ -93,7 +96,8 @@ export const Total = styled.p`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-margin-top: 1rem;
+margin-top: 0.5rem;
+margin-bottom:0.5rem ;
 color:red;
 font-weight: 600;
 `
@@ -114,18 +118,19 @@ flex-direction: column;
 height: 10%;
 `
 
-export const Form = styled.div`
+export const Form = styled.form`
 display: flex;
 flex-direction: row;
 justify-content: flex-start;
 width: 100%;
+margin-bottom: 11rem;
 label{
   align-items: flex-start;
   margin-top: 0.6rem;
 }
 `
 
-export const ButtonCart = styled.div`
+export const ButtonCart = styled.button`
   width: 90%;
   height: 8vh;
   border: none;
