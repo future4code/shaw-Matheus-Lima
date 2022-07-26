@@ -1,0 +1,13 @@
+POST http://localhost:3003/users/signUp 
+Content-Type: application/json
+
+    {
+    "firstName": "Clebin",
+    "lastName":  "Delas",
+    "participation": "13"
+}
+
+
+###
+
+GET http://localhost:3003/users/users
