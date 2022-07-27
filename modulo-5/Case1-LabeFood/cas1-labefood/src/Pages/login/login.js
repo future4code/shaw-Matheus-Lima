@@ -1,12 +1,15 @@
 import React, { useState } from "react";
-import { ButtonStyled, DivPassword, Form, Main, InputMaterial } from "./styled";
+import { ButtonStyled, DivPassword, Form, Main, InputMaterial, LogoImg, ButtonSingUp } from "./styled";
 import axios from "axios";
 import { IconButton } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { BASE_URL } from "../../Constants/url";
 import { useNavigate } from "react-router-dom";
-import {goToFeed} from "../../Routes/coordinator"
+import ifuture from "../../Assets/ImgFooter/ifuture.png"
+import {goToFeed, goToSignUp} from "../../Routes/coordinator"
+
+
 
 const Login = () => {
   const navigate = useNavigate()
@@ -68,6 +71,7 @@ const Login = () => {
 
   return (
     <Main>
+      <LogoImg src={ifuture}/>
       <p>Entrar</p>
       <Form onSubmit={onSubmitLogin}>
         <InputMaterial
@@ -108,6 +112,7 @@ const Login = () => {
           </IconButton>
         </DivPassword>
         <ButtonStyled type="submit">Entrar</ButtonStyled>
+        <p>Não possui cadastro? </p><ButtonSingUp onClick={() =>goToSignUp(navigate)}>Clique aqui</ButtonSingUp>
       </Form>
     </Main>
   );

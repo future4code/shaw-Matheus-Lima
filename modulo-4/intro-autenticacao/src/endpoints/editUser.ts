@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
+import { userInfo } from "os";
 import { UserDatabase } from "../data/UserDatabase";
 import { Authenticator } from "../services/Authenticator";
+import { UserRole } from "../types";
 
 export default async function editUser(
    req: Request,
@@ -20,6 +22,11 @@ export default async function editUser(
       }
       const authenticator = new Authenticator()
       const data = authenticator.getData(token)
+
+      
+      if(data.role !== UserRole.ADMIN){
+         throw new Error("Usuário não autorizado!")
+      }
       
       const affectRows = await new UserDatabase().edit(data.id ,  {name, nickname})
 

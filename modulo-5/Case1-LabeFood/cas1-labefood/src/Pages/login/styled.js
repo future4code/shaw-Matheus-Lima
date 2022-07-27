@@ -6,6 +6,9 @@ export const InputMaterial = styled(TextField)`
 width: 100%;
 
 `
+export const LogoImg = styled.img`
+margin: 20% 0 10% 0;
+`
 
 export const Main = styled.div`
 padding: 10px;
@@ -47,3 +50,16 @@ justify-content: space-between;
 
 
 `
+
+export const ButtonSingUp = styled.button`
+background-color: transparent;
+border: none;
+transition: 0.3s;
+font-size: 1rem;
+font-weight: 700;
+cursor: pointer;
+&:houver{
+    font-size: 1rem;
+    color: red;
+    background-color: red;
+}`
