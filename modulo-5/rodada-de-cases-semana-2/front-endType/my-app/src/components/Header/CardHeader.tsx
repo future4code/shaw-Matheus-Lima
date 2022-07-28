@@ -30,7 +30,6 @@ console.log(user)
 
 
 useEffect(()=>{
-
 },[firstName,lastName,participation])
 
 return (
