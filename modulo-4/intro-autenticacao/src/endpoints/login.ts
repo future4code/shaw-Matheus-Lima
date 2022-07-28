@@ -1,6 +1,7 @@
 import { Request, Response } from "express"
 import { UserDatabase } from "../data/UserDatabase"
 import { Authenticator } from "../services/Authenticator"
+import { HarshManager } from "../services/HarshManager"
 
 export default async function login(req: Request, res: Response) {
     try {
@@ -13,12 +14,14 @@ export default async function login(req: Request, res: Response) {
             throw new Error("Email ou senha incorreta")
         }
 
-        if(user.password != password){
+        const HashManager = new HarshManager()
+        const passwordIsCorret: boolean = await HashManager.compare(password,user.password)
+        if(!passwordIsCorret ){
             throw new Error("Email ou senha incorreta")
         }
 
         const authenticator = new Authenticator()
-        const token = authenticator.generateToken({id: user.id})
+        const token = authenticator.generateToken({id: user.id, role:user.role})
         res.send({token})
 
     } catch (error: any) {
