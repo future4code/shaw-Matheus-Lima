@@ -4,21 +4,21 @@
 
 
 
-[Deploy da aplicação]()
+[Deploy da aplicação](https://faded-covear.surge.sh/)
 
 [Documentação da API](https://documenter.getpostman.com/view/20354123/UzXVrt1d)
 
-
+[Deploy do heroku](https://cubos-back.herokuapp.com/)
 
 Projeto inspirado no case do seguinte desafio 
 
 <div align="center">
-   <img src="https://github.com/cubonetwork/fullstack-challenge/blob/master/layout-onepage.png" width="100%" height="250" />
+   <img src="https://github.com/cubonetwork/fullstack-challenge/blob/master/layout-onepage.png" width="100%" height="400" />
 </div>
 
 <div align="center">
-   <img src="![image](https://user-images.githubusercontent.com/61365431/181767840-31f54fa2-71e3-42ed-8f66-43b99a661e26.png)
-" />
+   <img src="https://user-images.githubusercontent.com/61365431/181772810-4d452810-7480-4f60-9706-f52b877a2581.png")
+ />
 </div>
 
 <br>
