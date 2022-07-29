@@ -11,6 +11,7 @@
 [Deploy do heroku](https://cubos-back.herokuapp.com/)
 
 Projeto inspirado no case do seguinte desafio 
+https://github.com/cubonetwork/fullstack-challenge
 
 <div align="center">
    <img src="https://github.com/cubonetwork/fullstack-challenge/blob/master/layout-onepage.png" width="100%" height="400" />
