@@ -7,10 +7,10 @@ email VARCHAR(255) NOT  NULL
 
 
 SELECT * FROM TodoListTask;
-DROP TABLE to_do_users_task;
+DROP TABLE TodoListTask;
 
 CREATE TABLE TodoListTask (
-	id INT PRIMARY KEY auto_increment, 
+	id VARCHAR(255) PRIMARY KEY, 
     title VARCHAR(255) NOT NULL, 
     description TEXT NOT NULL, 
     status VARCHAR(255) NOT NULL DEFAULT "to_do",
@@ -26,3 +26,9 @@ PRIMARY KEY (task_id, assignee_id),
 FOREIGN KEY (task_id) REFERENCES to_do_users_task(id),
 FOREIGN KEY (assignee_id) REFERENCES Users(id)
 );
+
+
+SELECT TodoListTask.*, nickname
+    FROM TodoListTask
+    JOIN Users
+    ON creator_user_id = Users.id

@@ -1,7 +1,11 @@
 {
   "scripts": {
-      "start": "tsc && node --inspect ./build/controller/index.js",
-      "dev": "tsnd --transpile-only --ignore-watch node_modules ./src/index.ts"
+    "start": "node ./build/index.js",
+    "dev": "ts-node-dev ./src/index.ts",
+    "postinstall": "tsc"
+  },
+  "engines": {
+    "node": "v16.13.2"
   },
   "dependencies": {
       "bcryptjs": "^2.4.3",
