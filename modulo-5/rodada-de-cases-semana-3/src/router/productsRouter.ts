@@ -12,8 +12,8 @@ const productBusiness = new ProductBusiness(
     new IdGenerator()
 )
 
-const productController = new ProductController(productBusiness)
+const productController = new ProductController(productBusiness, new IdGenerator)
 
 
 productsRouter.post("/create", productController.createProduct)
-productsRouter.get("/products/:id",productController.getProductsById)
+productsRouter.get("/products/:id", productController.getProductsById)

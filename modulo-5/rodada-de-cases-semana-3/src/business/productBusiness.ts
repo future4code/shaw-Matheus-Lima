@@ -11,9 +11,9 @@ export class ProductBusiness {
     ) { }
 
     newProduct = async (inputProduct: ProductsDTO) => {
-        const { product_name, product_price, product_quantity, product_tag } = inputProduct
+        const { id,product_name, product_price, product_quantity, product_tag } = inputProduct
 
-        const id = this.IdGenerator.generateId()
+       
 
         const newProducts = new ProductSale(
             id,
