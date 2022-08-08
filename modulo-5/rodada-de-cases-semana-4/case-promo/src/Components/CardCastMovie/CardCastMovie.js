@@ -1,16 +1,19 @@
 import React from "react"
-import img_url from "../../Constants/img_url"
+import { CastCardContainer, Path } from "./styled"
 
+const CastCardMovie = (props) => {
 
-
-
-const cardCastMovie = ()=>{
-    return <div>
-        <img src={`${img_url}/${ator.ator.profile_patch}`} alt="foto-ator"/>
-        <p>{ator.ator.name}</p>
-        <p>{ator.ator.character}</p>
-
-    </div>
+  return (
+    <CastCardContainer
+      key={props.id}
+    >
+      <Path src={props.path} alt="" />
+      <div>
+        <h4>{props.name}</h4>
+        <p>{props.character}</p>
+      </div>
+    </CastCardContainer>
+  )
 }
 
-export default cardCastMovie
+export default CastCardMovie

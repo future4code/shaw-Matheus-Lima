@@ -1,50 +1,14 @@
-import styled from 'styled-components'
-import ReactPaginate from "react-paginate";
+import styled from "styled-components"
 
-export const MainContainer = styled.div`
-display: flex;
-flex-direction: column;
-min-height: 100vh;
-align-items: center;
-background-color:#E5E5E5;
+export const HomeContainer = styled.div `
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+  padding: 20px 160px;
+  @media screen and (min-device-width : 300px) and (max-device-width : 500px) {
+    padding: 20px 12px;
+    gap: 16px;
+  }
 `
-
-export const MoviesList = styled.div`
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
-    margin-top: 20px;
-    width: 100%;
-`
-
-export const PaginateContainer = styled(ReactPaginate)`
-    height: 40px;
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin-bottom: 50px;
-    a {
-        padding: 5px;
-        margin: 5px;
-        border-radius: 5px;
-        font-weight: bold;
-        color: #5C16C5;
-        cursor: pointer;
-                :hover {
-            color: whitesmoke;
-            background-color: #ceb9ed;
-        }
-    }
-    
-    .paginationActive a {
-        color: #5C16C5;
-        background-color: #ceb9ed;
-    }
-    
-    @media screen and (min-device-width: 320px) and (max-device-width: 480px) {
-        a {
-            padding: 5px;
-            margin: 5px;
-        }
-    }
-`; 

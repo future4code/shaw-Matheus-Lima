@@ -21,11 +21,10 @@ const HeaderHome = () => {
         <MainText>
           Milhões de filmes, séries e pessoas para descobrir. Explore já!
         </MainText>
-        <p>FILTRE POR:</p>
         <GenderList>
           {generos.length > 0 ? generos.map((genero) => {
                 return <GenderButtons key={genero.id} genero={genero}/>;
-              }) : <p>Carregando generos</p>}
+              }) : <p></p>}
         </GenderList>
       </Content>
     </MainContainer>

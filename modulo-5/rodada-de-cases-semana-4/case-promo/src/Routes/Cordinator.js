@@ -7,5 +7,5 @@ export const goToPages = (navigate,pages)=>{
 }
 
 export const goToDetailsMovie = (navigate,id)=>{
-    navigate(`/movie/${id}`)
+    navigate(`/details/${id}`)
 }

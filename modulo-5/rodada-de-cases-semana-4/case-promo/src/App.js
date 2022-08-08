@@ -1,17 +1,14 @@
-import Router from "./Routes/Router";
-import { BrowserRouter } from "react-router-dom";
-import GlobalState from './Context/Global/GlobalState';
+import React from "react"
+import Router from "./Routes/Router"
+import { ContainerApp, GlobalStyle } from "./styled/GlobalStyled"
 
 function App() {
   return (
-    <div>
-      <BrowserRouter>
-        <GlobalState>
-          <Router/>
-        </GlobalState>
-      </BrowserRouter> 
-    </div>
-  );
+    <ContainerApp>
+      <GlobalStyle/>
+      <Router/>
+    </ContainerApp>
+  )
 }
 
-export default App;
+export default App
