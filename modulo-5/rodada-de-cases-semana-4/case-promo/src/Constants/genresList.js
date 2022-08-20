@@ -1,0 +1,21 @@
+export let genresList = [
+    { id: 28, name: 'Ação', select: false },
+    { id: 12, name: 'Aventura', select: false },
+    { id: 16, name: 'Animação', select: false },
+    { id: 35, name: 'Comédia', select: false },
+    { id: 80, name: 'Crime', select: false },
+    { id: 99, name: 'Documentário', select: false },
+    { id: 18, name: 'Drama', select: false },
+    { id: 10751, name: 'Família', select: false },
+    { id: 14, name: 'Fantasia', select: false },
+    { id: 36, name: 'História', select: false },
+    { id: 27, name: 'Terror', select: false },
+    { id: 10402, name: 'Música', select: false },
+    { id: 9648, name: 'Mistério', select: false },
+    { id: 10749, name: 'Romance', select: false },
+    { id: 878, name: 'Ficção científica', select: false },
+    { id: 10770, name: 'Cinema TV', select: false },
+    { id: 53, name: 'Thriller', select: false },
+    { id: 10752, name: 'Guerra', select: false },
+    { id: 37, name: 'Faroeste', select: false }
+  ]

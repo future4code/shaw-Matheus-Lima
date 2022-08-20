@@ -1,0 +1,14 @@
+POST http://localhost:3003/products/create
+Content-Type: application/json
+
+    {
+    "product_name": "Boneco-do-Thor",
+    "product_price":  "100",
+    "product_quantity": "32",
+    "product_tag": "Marvel"
+}
+
+
+###
+
+GET http://localhost:3003/products/products/998081cf-5c6b-4bca-8847-42138bbf46a0
